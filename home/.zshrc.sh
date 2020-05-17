@@ -15,7 +15,7 @@ autoload -U colors && colors
 # Load and execute the prompt theming system.
 fpath=("$curr/terminal" $fpath)
 autoload -Uz promptinit && promptinit
-prompt 'paulmillr'
+prompt 'longshot2k20'
 
 path=(/usr/local/opt/ruby/bin $HOME/.cargo/bin $path) # changing .zshenv doesn't work
 export GPG_TTY=$(tty) # For git commit signing
