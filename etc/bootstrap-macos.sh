@@ -8,13 +8,13 @@ mkdir -p $dev
 cd $dev
 
 echo 'Enter new hostname of the machine (e.g. macbook-paulmillr)'
-  read hostname
-  echo "Setting new hostname to $hostname..."
-  scutil --set HostName "$hostname"
-  compname=$(sudo scutil --get HostName | tr '-' '.')
-  echo "Setting computer name to $compname"
-  scutil --set ComputerName "$compname"
-  sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string "$compname"
+read hostname
+echo "Setting new hostname to $hostname..."
+scutil --set HostName "$hostname"
+compname=$(sudo scutil --get HostName | tr '-' '.')
+echo "Setting computer name to $compname"
+scutil --set ComputerName "$compname"
+sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string "$compname"
 
 pub=$HOME/.ssh/id_ed25519.pub
 echo 'Checking for SSH key, generating one if it does not exist...'
@@ -33,6 +33,7 @@ if [[ `uname` == 'Darwin' ]]; then
   fi
 
   # Homebrew packages.
+  #ASP remove python2 brew install diff-so-fancy gnupg htop node pbzip2 python python@2 ruby postgresql wget
   brew install diff-so-fancy gnupg htop node pbzip2 python python@2 ruby postgresql wget
   # echo 'Tweaking macOS...'
     # source 'etc/macos.sh'
