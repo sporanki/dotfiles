@@ -38,10 +38,14 @@ if [[ `uname` == 'Darwin' ]]; then
 
   # Homebrew vscode
   brew cask install visual-studio-code
-  
+
   #ASP install latest sdk https://github.com/AdoptOpenJDK/homebrew-openjdk
   brew tap AdoptOpenJDK/openjdk
   brew cask install adoptopenjdk14-openj9-large
+
+  
+  # Install intellij https://www.code2bits.com/how-to-install-intellij-idea-community-edition-on-macos-using-homebrew/
+  brew cask install intellij-idea-ce
 
   #ASP install docker https://medium.com/@yutafujii_59175/a-complete-one-by-one-guide-to-install-docker-on-your-mac-os-using-homebrew-e818eb4cfc3
   brew install docker docker-machine
