@@ -353,4 +353,12 @@ function untarage() {
   rm $tarf
 }
 
+#https://github.com/AdoptOpenJDK/homebrew-openjdk
+#change the version `jdk 9`
+jdk() {
+        version=$1
+        export JAVA_HOME=$(/usr/libexec/java_home -v"$version");
+        java -version
+ }
+
 export PATH="/usr/local/opt/python@3.8/bin:$PATH"
