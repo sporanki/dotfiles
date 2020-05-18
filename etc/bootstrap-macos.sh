@@ -39,6 +39,18 @@ if [[ `uname` == 'Darwin' ]]; then
   #ASP install latest sdk https://github.com/AdoptOpenJDK/homebrew-openjdk
   brew tap AdoptOpenJDK/openjdk
   brew cask install adoptopenjdk14-openj9-large
+
+  #ASP install docker https://medium.com/@yutafujii_59175/a-complete-one-by-one-guide-to-install-docker-on-your-mac-os-using-homebrew-e818eb4cfc3
+  brew install docker docker-machine
+  brew cask install virtualbox
+  #-> need password
+  #-> need to address System Preference setting, and possible re-run`
+  docker-machine create --driver virtualbox default
+  docker-machine env default
+  eval "$(docker-machine env default)"
+  docker run hello-world
+  docker-machine stop default
+
   
   # echo 'Tweaking macOS...'
     # source 'etc/macos.sh'
