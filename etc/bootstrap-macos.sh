@@ -35,8 +35,11 @@ if [[ `uname` == 'Darwin' ]]; then
   # Homebrew packages.
   #ASP remove python2 brew install diff-so-fancy gnupg htop node pbzip2 python python@2 ruby postgresql wget
   brew install diff-so-fancy gnupg htop node pbzip2 python python@2 ruby postgresql wget
-  #ASP install latest sdk
-  brew cask install adoptopenjdk
+  
+  #ASP install latest sdk https://github.com/AdoptOpenJDK/homebrew-openjdk
+  brew tap AdoptOpenJDK/openjdk
+  brew cask install adoptopenjdk14-openj9-large
+  
   # echo 'Tweaking macOS...'
     # source 'etc/macos.sh'
 
