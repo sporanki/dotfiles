@@ -43,6 +43,8 @@ if [[ `uname` == 'Darwin' ]]; then
   brew tap AdoptOpenJDK/openjdk
   brew cask install adoptopenjdk14-openj9-large
 
+  brew install maven
+
   # Install gradle
   brew install gradle
   
