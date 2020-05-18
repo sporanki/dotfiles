@@ -20,7 +20,7 @@ fpath=("$curr/terminal" $fpath)
 autoload -Uz promptinit && promptinit
 prompt 'paulmillr'
 
-path=(/usr/local/sbin /usr/local/opt/ruby/bin $HOME/.cargo/bin $path) # changing .zshenv doesn't work
+path=(/usr/local/sbin /usr/local/opt/ruby/bin $HOME/.cargo/bin /Applications/Visual Studio Code.app/Contents/Resources/app/bin /usr/local/opt/python@3.8/bin $path) # changing .zshenv doesn't work
 export GPG_TTY=$(tty) # For git commit signing
 
 # ==================================================================
@@ -360,5 +360,3 @@ jdk() {
         export JAVA_HOME=$(/usr/libexec/java_home -v"$version");
         java -version
  }
-
-export PATH="/usr/local/opt/python@3.8/bin:$PATH"
