@@ -2,7 +2,7 @@
 Colourful & robust configuration files and utilities for Mac, Linux and BSD. Installation is done with a simple command:
 
 ```sh
-curl -L https://git.io/pmdot | sh
+curl -L https://github.com/longshot2k20/dotfiles/blob/master/install.sh | sh
 ```
 
 The short URL expands to GitHub-hosted `install.sh`, which can be easily audited.
