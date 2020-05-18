@@ -2,7 +2,7 @@
 Colourful & robust configuration files and utilities for Mac, Linux and BSD. Installation is done with a simple command:
 
 ```sh
-https://raw.githubusercontent.com/longshot2k20/dotfiles/master/install.sh | sh
+curl -L https://raw.githubusercontent.com/longshot2k20/dotfiles/master/install.sh | sh
 ```
 
 The short URL expands to GitHub-hosted `install.sh`, which can be easily audited.
