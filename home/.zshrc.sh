@@ -1,5 +1,8 @@
 #!/usr/bin/env zsh
 
+#asp nl
+echo "home $HOME"
+pm=$HOME/Developer/personal
 curr="$pm/dotfiles"
 
 # Load main files.
@@ -15,7 +18,7 @@ autoload -U colors && colors
 # Load and execute the prompt theming system.
 fpath=("$curr/terminal" $fpath)
 autoload -Uz promptinit && promptinit
-prompt 'longshot2k20'
+prompt 'paulmillr'
 
 path=(/usr/local/opt/ruby/bin $HOME/.cargo/bin $path) # changing .zshenv doesn't work
 export GPG_TTY=$(tty) # For git commit signing

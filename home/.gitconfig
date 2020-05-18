@@ -32,7 +32,8 @@
   ui = true
 
 [core]
-  editor = code
+#ASP after installing code#  editor = code
+  editor = vim
   excludesfile = ~/.gitignore
   pager = diff-so-fancy | less --tabs=4 -RFX
 
