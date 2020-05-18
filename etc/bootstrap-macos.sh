@@ -43,9 +43,14 @@ if [[ `uname` == 'Darwin' ]]; then
   brew tap AdoptOpenJDK/openjdk
   brew cask install adoptopenjdk14-openj9-large
 
+  # Install gradle
+  brew install gradle
   
   # Install intellij https://www.code2bits.com/how-to-install-intellij-idea-community-edition-on-macos-using-homebrew/
   brew cask install intellij-idea-ce
+
+  # Install eclipse https://www.code2bits.com/how-to-install-eclipse-on-macos-using-homebrew/
+  brew cask install eclipse-jee
 
   #ASP install docker https://medium.com/@yutafujii_59175/a-complete-one-by-one-guide-to-install-docker-on-your-mac-os-using-homebrew-e818eb4cfc3
   brew install docker docker-machine
