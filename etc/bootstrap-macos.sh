@@ -39,6 +39,10 @@ if [[ `uname` == 'Darwin' ]]; then
   # Homebrew vscode
   brew cask install visual-studio-code
 
+  #todo verify code is in path at this point may be set in .zshrc
+  # Install vscode extension prettier
+  code --install-extension esbenp.prettier-vscode
+
   #ASP install latest sdk https://github.com/AdoptOpenJDK/homebrew-openjdk
   brew tap AdoptOpenJDK/openjdk
   brew cask install adoptopenjdk14-openj9-large
@@ -78,8 +82,8 @@ fi
 
 echo 'Symlinking config files...'
   source 'etc/symlink-dotfiles.sh'
-
-echo 'Applying sublime config...'
+  
+    echo 'Applying sublime config...'
   st=$(pwd)/sublime/packages
   as="$HOME/Library/Application Support/Sublime Text 3/Packages"
   asprefs="$as/User/Preferences.sublime-settings"
