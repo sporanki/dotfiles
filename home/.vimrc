@@ -1,1 +1,2 @@
 set ic
+syntax on
