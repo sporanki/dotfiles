@@ -42,6 +42,8 @@ if [[ `uname` == 'Darwin' ]]; then
   #todo verify code is in path at this point may be set in .zshrc
   # Install vscode extension prettier
   code --install-extension esbenp.prettier-vscode
+  # Install applescript(itunes scripts)
+  code --install-extension idleberg.applescript
 
   #ASP install latest sdk https://github.com/AdoptOpenJDK/homebrew-openjdk
   brew tap AdoptOpenJDK/openjdk
