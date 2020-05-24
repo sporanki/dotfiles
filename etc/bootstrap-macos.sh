@@ -60,6 +60,9 @@ if [[ `uname` == 'Darwin' ]]; then
   # Install eclipse https://www.code2bits.com/how-to-install-eclipse-on-macos-using-homebrew/
   brew cask install eclipse-jee
 
+  # show id3 tags in mp3 other formats
+  brew install exiftool
+
   #ASP install docker https://medium.com/@yutafujii_59175/a-complete-one-by-one-guide-to-install-docker-on-your-mac-os-using-homebrew-e818eb4cfc3
   brew install docker docker-machine
   brew cask install virtualbox
