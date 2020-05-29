@@ -63,6 +63,10 @@ if [[ `uname` == 'Darwin' ]]; then
   # show id3 tags in mp3 other formats
   brew install exiftool
 
+  # install tmux
+  brew install tmux
+  
+  #had issues with virtualbox crashing overnite so uninstalled all... may want to use stable releases for this
   #ASP install docker https://medium.com/@yutafujii_59175/a-complete-one-by-one-guide-to-install-docker-on-your-mac-os-using-homebrew-e818eb4cfc3
   brew install docker docker-machine
   brew cask install virtualbox
