@@ -65,6 +65,9 @@ if [[ `uname` == 'Darwin' ]]; then
 
   # install tmux
   brew install tmux
+
+  # install iterm2
+  brew cask install iterm2
   
   #had issues with virtualbox crashing overnite so uninstalled all... may want to use stable releases for this
   #ASP install docker https://medium.com/@yutafujii_59175/a-complete-one-by-one-guide-to-install-docker-on-your-mac-os-using-homebrew-e818eb4cfc3
