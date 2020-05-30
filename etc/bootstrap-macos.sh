@@ -68,7 +68,11 @@ if [[ `uname` == 'Darwin' ]]; then
 
   # install iterm2
   brew cask install iterm2
+
+  # install amazon music app
+  brew cask install amazon-music
   
+  #had nothing to do with virtualbox can reinstall
   #had issues with virtualbox crashing overnite so uninstalled all... may want to use stable releases for this
   #ASP install docker https://medium.com/@yutafujii_59175/a-complete-one-by-one-guide-to-install-docker-on-your-mac-os-using-homebrew-e818eb4cfc3
   brew install docker docker-machine
