@@ -2,6 +2,11 @@
 
 # A simple script for setting up macOS dev environment.
 
+# if old version installed this is how you remove(brute force)
+# sudo rm -rf /Library/Developer/CommandLineTools
+# install xcode commandline tills will be prompted for eula
+xcode-select --install
+
 dev="$HOME/Developer"
 pushd .
 mkdir -p $dev
