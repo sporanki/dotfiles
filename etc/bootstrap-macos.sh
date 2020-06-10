@@ -54,6 +54,14 @@ if [[ `uname` == 'Darwin' ]]; then
   brew tap AdoptOpenJDK/openjdk
   brew cask install adoptopenjdk14-openj9-large
 
+  #jdk8 needed for spark
+  brew cask install homebrew/cask-versions/adoptopenjdk8
+  brew install apache-spark
+  
+  #will get errors when running 'spark-shell' need to add hostname to /private/etc/hosts
+  #sudo vim /private/etc/hosts ADD LINE below 
+  #127.0.0.1       macbook-pro-aldo
+
   brew install maven
 
   # Install gradle
