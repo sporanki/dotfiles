@@ -23,6 +23,9 @@ prompt 'paulmillr'
 path=(/usr/local/sbin /Applications/Visual Studio Code.app/Contents/Resources/app/bin /usr/local/opt/ruby/bin /usr/local/opt/python@3.8/bin $HOME/.cargo/bin $path) # changing .zshenv doesn't work
 export GPG_TTY=$(tty) # For git commit signing
 
+#set default java_home (can be overriden with jdk function)
+export JAVA_HOME=`/usr/libexec/java_home -v 1.8.0_252`
+
 #for apache spark
 export SPARK_HOME=/usr/local/Cellar/apache-spark/2.4.5/libexec
 export PYTHONPATH=/usr/local/Cellar/apache-spark/2.4.5/libexec/python/:$PYTHONP$
