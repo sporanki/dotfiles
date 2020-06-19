@@ -44,22 +44,24 @@ if [[ `uname` == 'Darwin' ]]; then
   # install PyChame community edition
   brew cask install PyCharm-ce
   
-  # Homebrew vscode
+  # VS Code
   brew cask install visual-studio-code
 
+  # VS Code extensions
   #todo verify code is in path at this point may be set in .zshrc
   # Install vscode extension prettier
   code --install-extension esbenp.prettier-vscode
+  # GIT history
+  code --install-extension donjayamanne.githistory
   # Install applescript(itunes scripts)
   code --install-extension idleberg.applescript
-
+  
   #ASP install latest sdk https://github.com/AdoptOpenJDK/homebrew-openjdk
   brew tap AdoptOpenJDK/openjdk
   brew cask install adoptopenjdk14-openj9-large
 
   #jdk8 needed for spark
   brew cask install homebrew/cask-versions/adoptopenjdk8
-  brew install apache-spark
   
   #will get errors when running 'spark-shell' need to add hostname to /private/etc/hosts
   #sudo vim /private/etc/hosts ADD LINE below 
@@ -87,6 +89,20 @@ if [[ `uname` == 'Darwin' ]]; then
 
   # install amazon music app
   brew cask install amazon-music
+
+  # tree
+  brew install tree
+
+  # scala
+  brew install scala
+  # scala package manager(not required but may be useful)
+  brew install sbt
+
+  ## hadoop start
+  brew install zookeeper
+  brew install apache-spark
+  brew install hbase
+  ## hadoop end
   
   #had nothing to do with virtualbox can reinstall
   #had issues with virtualbox crashing overnite so uninstalled all... may want to use stable releases for this
