@@ -38,7 +38,7 @@ if [[ `uname` == 'Darwin' ]]; then
   fi
 
   # Homebrew packages.
-  #ASP remove python2 brew install diff-so-fancy gnupg htop node pbzip2 python python@2 ruby postgresql wget
+  # ASP remove python2 brew install diff-so-fancy gnupg htop node pbzip2 python python@2 ruby postgresql wget
   brew install diff-so-fancy gnupg htop node pbzip2 python python@2 ruby postgresql wget
  
   # install PyChame community edition
