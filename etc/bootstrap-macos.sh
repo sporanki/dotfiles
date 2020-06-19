@@ -102,9 +102,9 @@ if [[ `uname` == 'Darwin' ]]; then
   brew install sbt
 
   ## hadoop start
-  brew install zookeeper
-  brew install apache-spark
-  brew install hbase
+  #brew install zookeeper
+  #brew install apache-spark
+  #brew install hbase
   ## hadoop end
   
   #had nothing to do with virtualbox can reinstall

@@ -25,21 +25,8 @@ prompt 'paulmillr'
 path=(/usr/local/sbin /Applications/Visual Studio Code.app/Contents/Resources/app/bin /usr/local/opt/ruby/bin /usr/local/opt/python@3.8/bin $HOME/.cargo/bin $path) # changing .zshenv doesn't work
 export GPG_TTY=$(tty) # For git commit signing
 
-# zk
-export ZOOKEEPER_HOME=/usr/local/Cellar/zookeeper/3.5.8/libexec
-export ZOOKEEPER_CONF_DIR=/usr/local/etc/zookeeper
-export ZOOKEEPER_VERSION=3.5.8
-export PATH=$ZOOKEEPER_HOME/bin:$PATH
-
-# hbase
-export HBASE_VERSION=1.3.52
-export HBASE_HOME=/usr/local/Cellar/hbase/1.3.5/libexec
-export HBASE_CONF_DIR=$HBASE_HOME/conf
-export PATH=$HBASE_HOME/bin:$PATH
-
-# apache spark
-export SPARK_HOME=/usr/local/Cellar/apache-spark/2.4.5/libexec
-export PYTHONPATH=/usr/local/Cellar/apache-spark/2.4.5/libexec/python/:$PYTHONP$
+#set default java_home (can be overriden with jdk function)
+export JAVA_HOME=`/usr/libexec/java_home -v 1.8.0_252`
 
 # ==================================================================
 # = Aliases =
