@@ -72,26 +72,29 @@ if [[ `uname` == 'Darwin' ]]; then
   # Install gradle
   brew install gradle
   
-  # Install intellij https://www.code2bits.com/how-to-install-intellij-idea-community-edition-on-macos-using-homebrew/
+  # intellij community-edition https://www.code2bits.com/how-to-install-intellij-idea-community-edition-on-macos-using-homebrew/
   brew cask install intellij-idea-ce
 
-  # Install eclipse https://www.code2bits.com/how-to-install-eclipse-on-macos-using-homebrew/
+  # eclipse https://www.code2bits.com/how-to-install-eclipse-on-macos-using-homebrew/
   brew cask install eclipse-jee
 
   # show id3 tags in mp3 other formats
   brew install exiftool
 
-  # install tmux
+  # tmux
   brew install tmux
 
-  # install iterm2
+  # iterm2
   brew cask install iterm2
 
-  # install amazon music app
+  # amazon music app
   brew cask install amazon-music
 
   # tree
   brew install tree
+
+  # jq
+  brew install jq
 
   # scala
   brew install scala
