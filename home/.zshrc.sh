@@ -1,21 +1,20 @@
 #!/usr/bin/env zsh
 
 echo "home $HOME"
-pm=$HOME/Developer/personal
-curr="$pm/dotfiles"
+dotfiles="$HOME/Developer/personal/dotfiles"
 
 # Load main files.
 echo "Load start\t" $(gdate "+%s-%N")
-source "$curr/terminal/startup.sh"
-echo "$curr/terminal/startup.sh"
-source "$curr/terminal/completion.sh"
-source "$curr/terminal/highlight.sh"
+source "$dotfiles/terminal/startup.sh"
+echo "$dotfiles/terminal/startup.sh"
+source "$dotfiles/terminal/completion.sh"
+source "$dotfiles/terminal/highlight.sh"
 echo "Load end\t" $(gdate "+%s-%N")
 
 autoload -U colors && colors
 
 # Load and execute the prompt theming system.
-fpath=("$curr/terminal" $fpath)
+fpath=("$dotfiles/terminal" $fpath)
 autoload -Uz promptinit && promptinit
 prompt 'paulmillr'
 
