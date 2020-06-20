@@ -1,19 +1,16 @@
 #!/usr/bin/env zsh
 
-#asp nl
 echo "home $HOME"
 pm=$HOME/Developer/personal
 curr="$pm/dotfiles"
 
-export HOMEBREW_EDITOR=/usr/local/bin/code
-
 # Load main files.
-# echo "Load start\t" $(gdate "+%s-%N")
+echo "Load start\t" $(gdate "+%s-%N")
 source "$curr/terminal/startup.sh"
-# echo "$curr/terminal/startup.sh"
+echo "$curr/terminal/startup.sh"
 source "$curr/terminal/completion.sh"
 source "$curr/terminal/highlight.sh"
-# echo "Load end\t" $(gdate "+%s-%N")
+echo "Load end\t" $(gdate "+%s-%N")
 
 autoload -U colors && colors
 
@@ -25,11 +22,14 @@ prompt 'paulmillr'
 path=(/usr/local/sbin /Applications/Visual Studio Code.app/Contents/Resources/app/bin /usr/local/opt/ruby/bin /usr/local/opt/python@3.8/bin $HOME/.cargo/bin $path) # changing .zshenv doesn't work
 export GPG_TTY=$(tty) # For git commit signing
 
-#set default java_home (can be overriden with jdk function)
+export HOMEBREW_EDITOR=code
+
+#set default java_home(can be overriden in current shell with jdk function)
 export JAVA_HOME=`/usr/libexec/java_home -v 1.8.0_252`
 
+## Big-Data Start
+# PREREQS: big-data.sh
 
-## Big-Data
 # ZK
 export ZOOKEEPER_HOME=/usr/local/Cellar/zookeeper/3.4.14/libexec
 export ZOOKEEPER_CONF_DIR=/usr/local/etc/zookeeper
@@ -42,7 +42,16 @@ export HADOOP_HOME=/usr/local/Cellar/hadoop/2.8.1/libexec
 export HADOOP_CONF_DIR=$HADOOP_HOME/etc/hadoop/
 export PATH=$HADOOP_HOME/bin:$HADOOP_HOME/sbin:$PATH
 
-## End Big-Data
+# Hive 
+export HIVE_VERSION=1.2.2
+export HIVE_HOME=/usr/local/Cellar/hive/1.2.2/libexec
+export HIVE_CONF_DIR=$HIVE_HOME/conf
+export PATH=$HIVE_HOME/bin:$PATH
+alias hive-start='$HOME/Data/appData/hive/scripts/run-hive.sh start'
+alias hive-stop='$HOME/Data/appData/hive/scripts/run-hive.sh stop'
+alias hive-connect='$HIVE_HOME/bin/beeline -u jdbc:hive2://localhost:10000/default -n $USER'
+
+## Big-Data End
 
 ###
 # ==================================================================
@@ -375,10 +384,10 @@ function untarage() {
   rm $tarf
 }
 
+#change the java version in the current shell e.g. `jdk 8`
 #https://github.com/AdoptOpenJDK/homebrew-openjdk
-#change the version `jdk 9`
 jdk() {
-        version=$1
-        export JAVA_HOME=$(/usr/libexec/java_home -v"$version");
-        java -version
+  version=$1
+  export JAVA_HOME=$(/usr/libexec/java_home -v"$version");
+  java -version
  }
