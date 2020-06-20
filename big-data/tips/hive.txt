@@ -1,8 +1,8 @@
-###MySQL
+###MySQL used as the metadata store for hive
 #start
 brew services start mysql
 
-#only initially set pw
+#run initially to set the root pw
 mysql_secure_installation
 
 ###Hive
@@ -11,18 +11,25 @@ mysql_secure_installation
 /usr/local/Cellar/hive/1.2.2/libexec/bin
 
 ## Start hive
-~/Data/appData/hive/scripts/./run-hive.sh start
+hive-start
 
 ## Stop hive
-~/Data/appData/hive/scripts/./run-hive.sh stop
+hive-stop
 
-##beeline
-/usr/local/Cellar/hive/1.2.2/libexec/bin/beeline -u jdbc:hive2://localhost:10000/default -n $USER
+## Run beeline interactive shell
+hive-connect
+
+##beeline run with the OS user
+hive-connect
 #inside sql shell
+show databases;
+show tables;
+create table test(id int, name string);
+insert into test values(1,'John Smith');
+select * from test;
 
-
-##beeline success logs
-logs ❯ /usr/local/Cellar/hive/1.2.2/libexec/bin/beeline -u jdbc:hive2://localhost:10000/default -n apanizo
+##beeline output from running sql commands above
+logs ❯ /usr/local/Cellar/hive/1.2.2/libexec/bin/beeline -u jdbc:hive2://localhost:10000/default -n $USER
 
 Connecting to jdbc:hive2://localhost:10000/default
 Connected to: Apache Hive (version 1.2.2)
@@ -70,11 +77,11 @@ No rows affected (14.624 seconds)
 +----------+-------------+--+
 1 row selected (0.086 seconds)
 
-##beeline error when logging in as dbuser
-#doesnt have access to hdfs?
+##beeline error when trying to run beeline as jdbc user
+#this error makes sense Hive needs to access hdfs, in order to do that pass '-n $USER' instead of jdbc user, that's only for metastore configured in xml.
 /usr/local/Cellar/hive/1.2.2/libexec/bin/beeline -u jdbc:hive2://localhost:10000/default -n dbuser
 
-FAILED: Execution Error, return code 1 from org.apache.hadoop.hive.ql.exec.DDLTask. MetaException(message:Got exception: org.apache.hadoop.security.AccessControlException Permission denied: user=dbuser, access=WRITE, inode="/":apanizo:supergroup:drwxr-xr-x
+FAILED: Execution Error, return code 1 from org.apache.hadoop.hive.ql.exec.DDLTask. MetaException(message:Got exception: org.apache.hadoop.security.AccessControlException Permission denied: user=dbuser, access=WRITE, inode="/":$USER:supergroup:drwxr-xr-x
 
 ### Appendix
 ## MySQL commands

@@ -76,18 +76,18 @@ mkdir -p $HOME/Data/appData/hadoop/dfs/name
 mkdir -p $HOME/Data/appData/hadoop/dfs/data
 hdfs namenode -format
 
-# MySQL latest
+### MySQL latest, RDBMS is used to store the HIVE metadata(table structure and location of data in hdfs)
 brew install mysql
 
 #interactively set the password for the root user and choose 'y' for all prompts to grant everything
 mysql_secure_installation
 
-#install hive 1.2.2
+### Hive 1.2.2
 cp $dev/personal/dotfiles/big-data/hive/rb/hive.rb /usr/local/Homebrew/Library/Taps/homebrew/homebrew-core/Formula/
 brew install hive
 brew pin hive
 
-#add mysql jdbc drivers
+#Add mysql jdbc drivers to connect to MySQL for metadata
 mkdir -p ~/Data/appData/mysql/jars
 cd ~/Data/appData/mysql/jars
 wget https://dev.mysql.com/get/Downloads/Connector-J/mysql-connector-java-5.1.46.tar.gz
@@ -98,6 +98,7 @@ sudo chown "$USER":admin /Library/Java/Extensions/mysql-connector-java-5.1.46.ja
 
 # default user/pass change this here and in sql script, if desired
 # update the config file(if cherry picking take this whole section)
+# jdbc connection for metadata
 JDBCUSER='dbuser'
 JDBCPASS='dbpassword'
 [[ -z "$JDBCUSER" ]] && { echo "JDBC user must be set"; exit 1; } || echo "JDBC user is set"
@@ -108,7 +109,7 @@ sed -e "s|@@HOME@@|$HOME|g
 
 # verify that the contents of hive-site.xml has proper usr/pass
 
-### Configure the Metastore 
+### Configure the Metastore in RDBMS
 ## Interactive
 # mysql -u root -p 
 # [enter the commands from big-data/hive/create-metastore.sql ]
@@ -127,8 +128,6 @@ mkdir -p /usr/local/Cellar/hive/1.2.2/libexec/logs
 mkdir -p ~/Data/appData/hive/scripts
 cp $dev/personal/dotfiles/big-data/hive/run-hive.sh ~/Data/appData/hive/scripts
 chmod u+x ~/Data/appData/hive/scripts/run-hive.sh
-
-
 
 #brew install apache-spark
 #will get errors when running 'spark-shell' need to add hostname to /private/etc/hosts
