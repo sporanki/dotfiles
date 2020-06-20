@@ -28,6 +28,23 @@ export GPG_TTY=$(tty) # For git commit signing
 #set default java_home (can be overriden with jdk function)
 export JAVA_HOME=`/usr/libexec/java_home -v 1.8.0_252`
 
+
+## Big-Data
+# ZK
+export ZOOKEEPER_HOME=/usr/local/Cellar/zookeeper/3.4.14/libexec
+export ZOOKEEPER_CONF_DIR=/usr/local/etc/zookeeper
+export ZOOKEEPER_VERSION=3.4.14
+export PATH=$ZOOKEEPER_HOME/bin:$PATH
+
+# Hadoop
+export HADOOP_VERSION=2.8.1
+export HADOOP_HOME=/usr/local/Cellar/hadoop/2.8.1/libexec
+export HADOOP_CONF_DIR=$HADOOP_HOME/etc/hadoop/
+export PATH=$HADOOP_HOME/bin:$HADOOP_HOME/sbin:$PATH
+
+## End Big-Data
+
+###
 # ==================================================================
 # = Aliases =
 # ==================================================================

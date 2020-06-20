@@ -65,7 +65,7 @@ if [[ `uname` == 'Darwin' ]]; then
   
   #will get errors when running 'spark-shell' need to add hostname to /private/etc/hosts
   #sudo vim /private/etc/hosts ADD LINE below 
-  #127.0.0.1       macbook-pro-aldo
+  #127.0.0.1       macbook-pro-user
 
   brew install maven
 
@@ -101,11 +101,57 @@ if [[ `uname` == 'Darwin' ]]; then
   # scala package manager(not required but may be useful)
   brew install sbt
 
-  ## hadoop start
-  #brew install zookeeper
+  ## big-data start
+  #this should be run ad-hoc after all basic installs... in separate script
+  
+  # ZK
+  # doesn't work expect java9 + 
+  # brew install zookeeper
+  
+  #make sure no process is running on 2181 $(lsof -i :2181)
+  brew install https://raw.githubusercontent.com/Homebrew/homebrew-core/6d8197bbb5f77e62d51041a3ae552ce2f8ff1344/Formula/zookeeper.rb
+
+  mdkir -p $HOME/Data/appData/zookeeper/data
+  # backup
+  cp -p /usr/local/etc/zookeeper/zoo.cfg /usr/local/etc/zookeeper/zoo.cfg.og 
+  # update template and cp, appears noclobber is set use >| to override
+  sed "s|@@HOME@@|$HOME|g" $dev/personal/dotfiles/big-data/zk/zoo.cfg >| /usr/local/etc/zookeeper/zoo.cfg 
+  #verify zkServer start... zkServer status=standalone mode
+  brew pin zookeeper
+
+  #create branch in homebrew-core... will store modifications only temporarily and pin the formulaes
+  pushd /usr/local/Homebrew/Library/Taps/homebrew/homebrew-core 
+  git checkout -b big-data
+  
+  #install hadoop
+  #had to modify EOS.undent -> EOS
+  #version 2.8.1
+  #git checkout 6dacc95 -- Formula/hadoop.rb
+  cp $dev/personal/dotfiles/big-data/hadoop/rb/hadoop.rb /usr/local/Homebrew/Library/Taps/homebrew/homebrew-core/Formula/
+  brew install hadoop
+  # backup
+  cp -p /usr/local/Cellar/hadoop/2.8.1/libexec/etc/hadoop/hadoop-env.sh /usr/local/Cellar/hadoop/2.8.1/libexec/etc/hadoop/hadoop-env.sh.og 
+  cp -p /usr/local/Cellar/hadoop/2.8.1/libexec/etc/hadoop/core-site.xml /usr/local/Cellar/hadoop/2.8.1/libexec/etc/hadoop/core-site.xml.og 
+  cp -p /usr/local/Cellar/hadoop/2.8.1/libexec/etc/hadoop/hdfs-site.xml /usr/local/Cellar/hadoop/2.8.1/libexec/etc/hadoop/hdfs-site.xml.og 
+  cp -p /usr/local/Cellar/hadoop/2.8.1/libexec/etc/hadoop/yarn-site.xml /usr/local/Cellar/hadoop/2.8.1/libexec/etc/hadoop/yarn-site.xml.og 
+
+  # update configs
+  cp -p $dev/personal/dotfiles/big-data/hadoop/hadoop-env.sh /usr/local/Cellar/hadoop/2.8.1/libexec/etc/hadoop/hadoop-env.sh
+  cp -p $dev/personal/dotfiles/big-data/hadoop/core-site.xml /usr/local/Cellar/hadoop/2.8.1/libexec/etc/hadoop/core-site.xml
+  cp -p $dev/personal/dotfiles/big-data/hadoop/mapred-site.xml /usr/local/Cellar/hadoop/2.8.1/libexec/etc/hadoop/mapred-site.xml
+  cp -p $dev/personal/dotfiles/big-data/hadoop/yarn-site.xml /usr/local/Cellar/hadoop/2.8.1/libexec/etc/hadoop/yarn-site.xml
+  sed "s|@@HOME@@|$HOME|g" $dev/personal/dotfiles/big-data/hadoop/hdfs-site.xml >| /usr/local/Cellar/hadoop/2.8.1/libexec/etc/hadoop/hdfs-site.xml
+
+  mkdir -p $HOME/Data/appData/hadoop/dfs/name
+  mkdir -p $HOME/Data/appData/hadoop/dfs/data
+  hdfs namenode -format
+  
+  brew pin hadoop
+  
   #brew install apache-spark
   #brew install hbase
-  ## hadoop end
+  popd
+  ## big-data end
   
   #had nothing to do with virtualbox can reinstall
   #had issues with virtualbox crashing overnite so uninstalled all... may want to use stable releases for this
