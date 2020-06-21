@@ -32,3 +32,12 @@ export HBASE_CONF_DIR=$HBASE_HOME/conf
 export PATH=$HBASE_HOME/bin:$PATH
 alias hbase-start='$HBASE_HOME/bin/start-hbase.sh'
 alias hbase-stop='$HBASE_HOME/bin/stop-hbase.sh'
+
+# Kafka
+export KAFKA_VERSION=2.3.1
+export KAFKA_HOME=/usr/local/Cellar/kafka/2.3.1/libexec
+export KAFKA_CONF_DIR=/usr/local/etc/kafka
+export PATH=$KAFKA_HOME/bin:$PATH
+alias kafka-start='$HOME/Data/appData/kafka/scripts/run-kafka.sh start'
+alias kafka-stop='$HOME/Data/appData/kafka/scripts/run-kafka.sh stop'
+alias topic='kafka-topics --zookeeper localhost:2181'

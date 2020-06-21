@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 ### STOP README ###
 # It is strongly recommended that these steps be run ad-hoc by copying and pasting sections.
@@ -6,31 +6,29 @@
 ###
 
 ### PRE-REQS ###
-# jdk8 is installed and JAVA_HOME is set 
+# jdk8 is installed and JAVA_HOME is set correctly before running
 ###
 
-#if cherry picking in zsh need this to print matching, unsetting because it can mess w/term
-setopt KSH_ARRAYS BASH_REMATCH
+#if cherry picking this in zsh need to add this opt to populate BASH_REMATCH, unsetting because it can mess w/term
+[[ -n "$ZSH_VERSION" ]] && setopt KSH_ARRAYS BASH_REMATCH
 if [[ $(printenv JAVA_HOME) =~ .*jdk-8.* ]]; then
   echo "JAVA_HOME set correctly " ${BASH_REMATCH[0]} 
 else
   echo "JAVA_HOME should be set to JDK-8" ${BASH_REMATCH[0]}
   echo "Please fix JAVA_HOME before proceeding" 
 fi
-unsetopt KSH_ARRAYS BASH_REMATCH
+[[ -n "$ZSH_VERSION" ]] && unsetopt KSH_ARRAYS BASH_REMATCH
 
-if [[ $(java -version 2>&1) =~ .*1\\.8\\.0.* ]]; then
-
-setopt KSH_ARRAYS BASH_REMATCH
+[[ -n "$ZSH_VERSION" ]] && setopt KSH_ARRAYS BASH_REMATCH
 if [[ $(java -version 2>&1) =~ .*\"1\\.8\\..*\" ]]; then
   echo "java cmd set correctly" ${BASH_REMATCH[0]}
 else
   echo "java cmd should be set to JDK-8" ${BASH_REMATCH[0]}
   echo "Please fix java cmd before proceeding"
 fi
-unsetopt KSH_ARRAYS BASH_REMATCH
+[[ -n "$ZSH_VERSION" ]] && unsetopt KSH_ARRAYS BASH_REMATCH
 
-# verify... file needs to be run from ~/Developer/personal/dotfiles
+# verify... file needs to be run from $HOME/Developer/personal/dotfiles
 dev="$HOME/Developer"
 dotfiles="$dev/personal/dotfiles"
 
@@ -88,8 +86,8 @@ brew install hive
 brew pin hive
 
 #Add mysql jdbc drivers to connect to MySQL for metadata
-mkdir -p ~/Data/appData/mysql/jars
-cd ~/Data/appData/mysql/jars
+mkdir -p $HOME/Data/appData/mysql/jars
+cd $HOME/Data/appData/mysql/jars
 wget https://dev.mysql.com/get/Downloads/Connector-J/mysql-connector-java-5.1.46.tar.gz
 tar -zxvf mysql-connector-java-5.1.46.tar.gz
 cd mysql-connector-java-5.1.46
@@ -125,13 +123,14 @@ sed -e "s|@@HOME@@|$HOME|g
 mkdir -p /usr/local/Cellar/hive/1.2.2/libexec/logs
 
 # Script to start HiveServer2 and HiveMetastore services
-mkdir -p ~/Data/appData/hive/scripts
-cp $dev/personal/dotfiles/big-data/hive/run-hive.sh ~/Data/appData/hive/scripts
-chmod u+x ~/Data/appData/hive/scripts/run-hive.sh
+mkdir -p $HOME/Data/appData/hive/scripts
+cp $dev/personal/dotfiles/big-data/hive/run-hive.sh $HOME/Data/appData/hive/scripts
+chmod u+x $HOME/Data/appData/hive/scripts/run-hive.sh
 
 ### HBase 1.2.6.1
 cp $dev/personal/dotfiles/big-data/hbase/rb/hbase.rb /usr/local/Homebrew/Library/Taps/homebrew/homebrew-core/Formula/
 brew install hbase
+brew pin hbase
 
 # backup configs
 cp -p /usr/local/Cellar/hbase/1.2.6.1/libexec/conf/hbase-env.sh /usr/local/Cellar/hbase/1.2.6.1/libexec/conf/hbase-env.sh.og 
@@ -141,6 +140,23 @@ cp -p /usr/local/Cellar/hbase/1.2.6.1/libexec/conf/hbase-site.xml /usr/local/Cel
 cp -p $dev/personal/dotfiles/big-data/hbase/hbase-env.sh /usr/local/Cellar/hbase/1.2.6.1/libexec/conf/hbase-env.sh
 cp -p $dev/personal/dotfiles/big-data/hbase/hbase-site.xml /usr/local/Cellar/hbase/1.2.6.1/libexec/conf/hbase-site.xml
 
+### Kafka 2.3.1 ~Confluent 5.3.1
+cp $dev/personal/dotfiles/big-data/kafka/rb/kafka.rb /usr/local/Homebrew/Library/Taps/homebrew/homebrew-core/Formula/
+brew install kafka
+brew pin kafka
+
+#Creating 2 brokers 0->:9093,1->:9094
+#create log folder
+mkdir -p $HOME/Data/appData/kafka/data/broker0/kafka-logs
+mkdir -p $HOME/Data/appData/kafka/data/broker1/kafka-logs
+
+sed "s|@@HOME@@|$HOME|g" $dev/personal/dotfiles/big-data/kafka/server0.properties >| /usr/local/etc/kafka/server0.properties
+sed "s|@@HOME@@|$HOME|g" $dev/personal/dotfiles/big-data/kafka/server1.properties >| /usr/local/etc/kafka/server1.properties
+
+#create start/stop scripts
+mkdir -p $HOME/Data/appData/kafka/scripts
+cp $dev/personal/dotfiles/big-data/kafka/run-kafka.sh $HOME/Data/appData/kafka/scripts
+chmod u+x $HOME/Data/appData/kafka/scripts/run-kafka.sh
 
 #brew install apache-spark
 #will get errors when running 'spark-shell' need to add hostname to /private/etc/hosts
