@@ -24,3 +24,11 @@ export PATH=$HIVE_HOME/bin:$PATH
 alias hive-start='$HOME/Data/appData/hive/scripts/run-hive.sh start'
 alias hive-stop='$HOME/Data/appData/hive/scripts/run-hive.sh stop'
 alias hive-connect='$HIVE_HOME/bin/beeline -u jdbc:hive2://localhost:10000/default -n $USER'
+
+# Hbase
+export HBASE_VERSION=1.2.6.1
+export HBASE_HOME=/usr/local/Cellar/hbase/1.2.6.1/libexec
+export HBASE_CONF_DIR=$HBASE_HOME/conf
+export PATH=$HBASE_HOME/bin:$PATH
+alias hbase-start='$HBASE_HOME/bin/start-hbase.sh'
+alias hbase-stop='$HBASE_HOME/bin/stop-hbase.sh'

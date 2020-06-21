@@ -129,6 +129,19 @@ mkdir -p ~/Data/appData/hive/scripts
 cp $dev/personal/dotfiles/big-data/hive/run-hive.sh ~/Data/appData/hive/scripts
 chmod u+x ~/Data/appData/hive/scripts/run-hive.sh
 
+### HBase 1.2.6.1
+cp $dev/personal/dotfiles/big-data/hbase/rb/hbase.rb /usr/local/Homebrew/Library/Taps/homebrew/homebrew-core/Formula/
+brew install hbase
+
+# backup configs
+cp -p /usr/local/Cellar/hbase/1.2.6.1/libexec/conf/hbase-env.sh /usr/local/Cellar/hbase/1.2.6.1/libexec/conf/hbase-env.sh.og 
+cp -p /usr/local/Cellar/hbase/1.2.6.1/libexec/conf/hbase-site.xml /usr/local/Cellar/hbase/1.2.6.1/libexec/conf/hbase-site.xml.og 
+
+# update configs
+cp -p $dev/personal/dotfiles/big-data/hbase/hbase-env.sh /usr/local/Cellar/hbase/1.2.6.1/libexec/conf/hbase-env.sh
+cp -p $dev/personal/dotfiles/big-data/hbase/hbase-site.xml /usr/local/Cellar/hbase/1.2.6.1/libexec/conf/hbase-site.xml
+
+
 #brew install apache-spark
 #will get errors when running 'spark-shell' need to add hostname to /private/etc/hosts
 #sudo vim /private/etc/hosts ADD LINE below 
