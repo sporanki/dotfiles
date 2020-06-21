@@ -4,12 +4,12 @@ echo "home $HOME"
 dotfiles="$HOME/Developer/personal/dotfiles"
 
 # Load main files.
-echo "Load start\t" $(gdate "+%s-%N")
+# echo "Load start\t" $(gdate "+%s-%N")
 source "$dotfiles/terminal/startup.sh"
-echo "$dotfiles/terminal/startup.sh"
+ #echo "$dotfiles/terminal/startup.sh"
 source "$dotfiles/terminal/completion.sh"
 source "$dotfiles/terminal/highlight.sh"
-echo "Load end\t" $(gdate "+%s-%N")
+# echo "Load end\t" $(gdate "+%s-%N")
 
 autoload -U colors && colors
 
@@ -23,34 +23,11 @@ export GPG_TTY=$(tty) # For git commit signing
 
 export HOMEBREW_EDITOR=code
 
-#set default java_home(can be overriden in current shell with jdk function)
+# set default java_home(can be overriden in current shell with jdk function)
 export JAVA_HOME=`/usr/libexec/java_home -v 1.8.0_252`
 
-## Big-Data Start
-# PREREQS: big-data.sh
-
-# ZK
-export ZOOKEEPER_HOME=/usr/local/Cellar/zookeeper/3.4.14/libexec
-export ZOOKEEPER_CONF_DIR=/usr/local/etc/zookeeper
-export ZOOKEEPER_VERSION=3.4.14
-export PATH=$ZOOKEEPER_HOME/bin:$PATH
-
-# Hadoop
-export HADOOP_VERSION=2.8.1
-export HADOOP_HOME=/usr/local/Cellar/hadoop/2.8.1/libexec
-export HADOOP_CONF_DIR=$HADOOP_HOME/etc/hadoop/
-export PATH=$HADOOP_HOME/bin:$HADOOP_HOME/sbin:$PATH
-
-# Hive 
-export HIVE_VERSION=1.2.2
-export HIVE_HOME=/usr/local/Cellar/hive/1.2.2/libexec
-export HIVE_CONF_DIR=$HIVE_HOME/conf
-export PATH=$HIVE_HOME/bin:$PATH
-alias hive-start='$HOME/Data/appData/hive/scripts/run-hive.sh start'
-alias hive-stop='$HOME/Data/appData/hive/scripts/run-hive.sh stop'
-alias hive-connect='$HIVE_HOME/bin/beeline -u jdbc:hive2://localhost:10000/default -n $USER'
-
-## Big-Data End
+# load big-data env's(hadoop, spark, etc.)
+source "$dotfiles/big-data/big-data-env.sh"
 
 ###
 # ==================================================================

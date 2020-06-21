@@ -6,8 +6,11 @@
 #format namenode depends on hdfs-site.xml
 hdfs namenode -format
 
-#BEFORE startng ensure current shell has the latest env sourced
+# BEFORE starting ensure current shell has the latest env sourced
 # check java -version && $JAVA_HOME
+
+# Before proceeding allow the ssh server to run see the appendix below fore more details
+# see: Install ssh server
 
 #start hadoop(in order)
 start-dfs.sh
@@ -65,20 +68,7 @@ Last contact: Fri Jun 19 20:15:37 EDT 2020
 
 ### Appendix
 
-##Resource Manager is not running
-Web page isn't responding process is not visible when running jps
-
-##Error when trying to start-dfs.sh
-
-~HADOOP_CONF_DIR ❯ start-dfs.sh
-20/06/19 17:24:39 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
-Starting namenodes on [localhost]
-localhost: ssh: connect to host localhost port 22: Connection refused
-localhost: ssh: connect to host localhost port 22: Connection refused
-Starting secondary namenodes [0.0.0.0]
-0.0.0.0: ssh: connect to host 0.0.0.0 port 22: Connection refused
-20/06/19 17:24:41 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
-
+###Install ssh server
 Solution: Check if sshd is running 
 sudo systemsetup -getremotelogin
 
@@ -101,6 +91,22 @@ If you cannot login, restart the firewall or reboot.
 verify by re-running 
 sudo systemsetup -getremotelogin
 
+##Error when trying to start-dfs.sh
+
+~HADOOP_CONF_DIR ❯ start-dfs.sh
+20/06/19 17:24:39 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+Starting namenodes on [localhost]
+localhost: ssh: connect to host localhost port 22: Connection refused
+localhost: ssh: connect to host localhost port 22: Connection refused
+Starting secondary namenodes [0.0.0.0]
+0.0.0.0: ssh: connect to host 0.0.0.0 port 22: Connection refused
+20/06/19 17:24:41 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... 
+using builtin-java classes where applicable
+
+This error occurs because sshd is not installed.  @see Install ssh server for fix.
+
+##Resource Manager is not running
+Web page isn't responding process is not visible when running jps
 
 ##Output of successful dfs-start.sh
  start-dfs.sh
