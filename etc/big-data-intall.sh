@@ -32,17 +32,13 @@ fi
 dev="$HOME/Developer"
 dotfiles="$dev/personal/dotfiles"
 
-# create branch in homebrew-core... will store modifications only temporarily then pin the formulaes
-pushd /usr/local/Homebrew/Library/Taps/homebrew/homebrew-core 
-git checkout -b big-data
-
 ### ZK 3.4.14(latest expects java9+) 
-
 # make sure no process is running on 2181 $(lsof -i :2181)
 lsof -i :2181 && { echo 'A process is already running on 2181'; echo 'Please investigate before continuing.'; }
 
 #todo replace with local rb file
-brew install https://raw.githubusercontent.com/Homebrew/homebrew-core/6d8197bbb5f77e62d51041a3ae552ce2f8ff1344/Formula/zookeeper.rb
+#brew install https://raw.githubusercontent.com/Homebrew/homebrew-core/6d8197bbb5f77e62d51041a3ae552ce2f8ff1344/Formula/zookeeper.rb
+cp $dev/personal/dotfiles/big-data/zk/rb/zookeeper.rb /usr/local/Homebrew/Library/Taps/homebrew/homebrew-core/Formula/
 brew pin zookeeper
 
 mdkir -p $HOME/Data/appData/zookeeper/data
@@ -163,7 +159,4 @@ chmod u+x $HOME/Data/appData/kafka/scripts/run-kafka.sh
 #sudo vim /private/etc/hosts ADD LINE below 
 #127.0.0.1       macbook-pro-user
 
-
-# deal with git cleanup in brew folder
-popd
 ## big-data end
