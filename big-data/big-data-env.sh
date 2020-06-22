@@ -41,3 +41,10 @@ export PATH=$KAFKA_HOME/bin:$PATH
 alias kafka-start='$HOME/Data/appData/kafka/scripts/run-kafka.sh start'
 alias kafka-stop='$HOME/Data/appData/kafka/scripts/run-kafka.sh stop'
 alias topic='kafka-topics --zookeeper localhost:2181'
+
+# Spark
+export SPARK_VERSION=2.2.1
+export SPARK_HOME=/usr/local/Cellar/apache-spark/2.2.1/libexec
+export SPARK_CONF_DIR=$SPARK_HOME/conf
+export SPARK_JARS_DIR=$SPARK_HOME/jars
+export PATH=$SPARK_HOME/bin:$PATH

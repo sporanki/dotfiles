@@ -1,22 +1,26 @@
 # HBase
 
+## Directories
+
+```console
 /usr/local/Cellar/hbase/1.2.6.1/libexec
 /usr/local/Cellar/hbase/1.2.6.1/libexec/conf
 /usr/local/Cellar/hbase/1.2.6.1/libexec/logs
+```
 
-## start hbase
+## Start hbase
 
 ```console
 hbase-start
 ```
 
-## stop hbase
+## Stop hbase
 
 ```console
 hbase-stop
 ```
 
-## validate the install
+## Validate the install
 
 ```console
 ~HBASE_CONF_DIR ❯ hbase shell

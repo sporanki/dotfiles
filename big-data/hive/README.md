@@ -1,25 +1,34 @@
-###MySQL used as the metadata store for hive
-#start
-brew services start mysql
+# Hive
 
-#run initially to set the root pw
-mysql_secure_installation
+## Directories
 
-###Hive
+```console
 /usr/local/Cellar/hive/1.2.2/libexec
 /usr/local/Cellar/hive/1.2.2/libexec/logs
 /usr/local/Cellar/hive/1.2.2/libexec/bin
+```
+
+## Start MySQL used as the metadata store for hive
+
+```console
+brew services start mysql
+```
 
 ## Start hive
+
+```console
 hive-start
+```
 
 ## Stop hive
+
+```console
 hive-stop
+```
 
 ## Run beeline interactive shell
-hive-connect
 
-##beeline run with the OS user
+```console
 hive-connect
 #inside sql shell
 show databases;
@@ -27,8 +36,11 @@ show tables;
 create table test(id int, name string);
 insert into test values(1,'John Smith');
 select * from test;
+```
 
-##beeline output from running sql commands above
+## Output from running sql commands above
+
+```console
 logs ❯ /usr/local/Cellar/hive/1.2.2/libexec/bin/beeline -u jdbc:hive2://localhost:10000/default -n $USER
 
 Connecting to jdbc:hive2://localhost:10000/default
@@ -77,15 +89,42 @@ No rows affected (14.624 seconds)
 +----------+-------------+--+
 1 row selected (0.086 seconds)
 
-##beeline error when trying to run beeline as jdbc user
-#this error makes sense Hive needs to access hdfs, in order to do that pass '-n $USER' instead of jdbc user, that's only for metastore configured in xml.
+```
+
+### Show on hadoop filesystem
+
+```console
+logs ❯ hadoop fs -ls /apps/hive/warehouse/test
+20/06/21 19:01:29 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+Found 1 items
+-rwxr-xr-x   1 apanizo supergroup         13 2020-06-20 17:14 /apps/hive/warehouse/test/000000_0
+```
+
+# Appendix
+
+## MySQL commands
+
+### show users
+
+```sql
+select user, host from mysql.user;
+```
+
+### drop user
+
+```sql
+drop user dbuser;
+
+```
+
+# Troubleshooting
+
+## Beeline error when trying to run beeline as jdbc user
+
+This error makes sense Hive needs to access hdfs, in order to do that pass '-n \$USER' instead of jdbc user, that's only for metastore configured in xml.
+
+```console
 /usr/local/Cellar/hive/1.2.2/libexec/bin/beeline -u jdbc:hive2://localhost:10000/default -n dbuser
 
 FAILED: Execution Error, return code 1 from org.apache.hadoop.hive.ql.exec.DDLTask. MetaException(message:Got exception: org.apache.hadoop.security.AccessControlException Permission denied: user=dbuser, access=WRITE, inode="/":$USER:supergroup:drwxr-xr-x
-
-### Appendix
-## MySQL commands
-# show users
-select user,host from mysql.user;
-# drop user
-drop user dbuser;
+```
