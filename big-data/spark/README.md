@@ -10,12 +10,6 @@
 
 ## Validate the install
 
-During the Hive installation a test table was created in the default database.
-
-Verify that we can see that table.
-
-````
-
 ```console
 logs ❯ spark-shell
 Setting default log level to "WARN".
@@ -48,7 +42,7 @@ scala> sc.version
 res0: String = 2.2.1
 
 scala>
-````
+```
 
 ## Validate Hive integration
 
