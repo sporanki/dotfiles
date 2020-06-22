@@ -52,6 +52,10 @@ scala>
 
 ## Validate Hive integration
 
+In the Hive README.md we create a test table in the default database.
+
+Let's verify we can access the table via Hive.
+
 ```console
 ~SPARK_CONF_DIR ❯ spark-shell
 Setting default log level to "WARN".
