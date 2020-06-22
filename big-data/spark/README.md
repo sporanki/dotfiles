@@ -21,7 +21,7 @@ logs ❯ spark-shell
 Setting default log level to "WARN".
 To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLevel(newLevel).
 20/06/21 22:20:40 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
-20/06/21 22:20:40 WARN Utils: Your hostname, macbook-pro-aldo resolves to a loopback address: 127.0.0.1; using 192.168.1.182 instead (on interface en0)
+20/06/21 22:20:40 WARN Utils: Your hostname, macbook-pro-user resolves to a loopback address: 127.0.0.1; using 192.168.1.182 instead (on interface en0)
 20/06/21 22:20:40 WARN Utils: Set SPARK_LOCAL_IP if you need to bind to another address
 20/06/21 22:20:40 WARN Utils: Service 'SparkUI' could not bind on port 4040. Attempting port 4041.
 Spark context Web UI available at http://192.168.1.182:4041
@@ -57,7 +57,7 @@ scala>
 Setting default log level to "WARN".
 To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLevel(newLevel).
 20/06/21 22:24:44 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
-20/06/21 22:24:44 WARN util.Utils: Your hostname, macbook-pro-aldo resolves to a loopback address: 127.0.0.1; using 192.168.1.182 instead (on interface en0)
+20/06/21 22:24:44 WARN util.Utils: Your hostname, macbook-pro-user resolves to a loopback address: 127.0.0.1; using 192.168.1.182 instead (on interface en0)
 20/06/21 22:24:44 WARN util.Utils: Set SPARK_LOCAL_IP if you need to bind to another address
 20/06/21 22:24:44 WARN util.Utils: Service 'SparkUI' could not bind on port 4040. Attempting port 4041.
 Spark context Web UI available at http://192.168.1.182:4041

@@ -97,7 +97,7 @@ No rows affected (14.624 seconds)
 logs ❯ hadoop fs -ls /apps/hive/warehouse/test
 20/06/21 19:01:29 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
 Found 1 items
--rwxr-xr-x   1 apanizo supergroup         13 2020-06-20 17:14 /apps/hive/warehouse/test/000000_0
+-rwxr-xr-x   1 user supergroup         13 2020-06-20 17:14 /apps/hive/warehouse/test/000000_0
 ```
 
 # Appendix
