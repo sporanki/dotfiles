@@ -1,9 +1,5 @@
 #!/bin/bash
 
-### PRE-REQS ###
-# jdk8 is installed and JAVA_HOME is set 
-###
-
 # ZK
 export ZOOKEEPER_HOME=/usr/local/Cellar/zookeeper/3.4.14/libexec
 export ZOOKEEPER_CONF_DIR=/usr/local/etc/zookeeper
@@ -73,3 +69,46 @@ export PATH=$PATH:$NIFI_HOME/bin
 alias nifi-start='nifi start'
 alias nifi-stop='nifi stop'
 alias nifi-status='nifi status'
+
+# Common Hadoop File System Aliases
+alias hf="hadoop fs"                                         # Base Hadoop fs command
+alias hfcat="hf -cat"                                        # Output a file to standard out
+alias hfchgrp="hf -chgrp"                                    # Change group association of files
+alias hfchmod="hf -chmod"                                    # Change permissions
+alias hfchown="hf -chown"                                    # Change ownership
+alias hfcfl="hf -copyFromLocal"                              # Copy a local file reference to HDFS
+alias hfctl="hf -copyToLocal"                                # Copy a HDFS file reference to local
+alias hfcp="hf -cp"                                          # Copy files from source to destination
+alias hfdu="hf -du"                                          # Display aggregate length of files
+alias hfdus="hf -dus"                                        # Display a summary of file lengths
+alias hfget="hf -get"                                        # Get a file from hadoop to local
+alias hfgetm="hf -getmerge"                                  # Get files from hadoop to a local file
+alias hfls="hf -ls"                                          # List files
+alias hfll="hf -lsr"                                         # List files recursivly
+alias hfmkdir="hf -mkdir"                                    # Make a directory
+alias hfmv="hf -mv"                                          # Move a file
+alias hfput="hf -put"                                        # Put a file from local to hadoop
+alias hfrm="hf -rm"                                          # Remove a file
+alias hfrmr="hf -rmr"                                        # Remove a file recursivly
+alias hfsr="hf -setrep"                                      # Set the replication factor of a file
+alias hfstat="hf -stat"                                      # Returns the stat information on the path
+alias hftail="hf -tail"                                      # Tail a file
+alias hftest="hf -test"                                      # Run a series of file tests. See options
+alias hftouch="hf -touchz"                                   # Create a file of zero length
+
+# Convenient Hadoop File System Aliases
+alias hfet="hf -rmr .Trash"                                  # Remove/Empty the trash
+function hfdub() {                                           # Display aggregate size of files descending
+   hadoop fs -du "$@" | sort -k 1 -n -r
+}
+
+#Common Hadoop Job Commands
+alias hj="hadoop job"                                        # Base Hadoop job command
+alias hjstat="hj -status"                                    # Print completion percentage and all job counters
+alias hjkill="hj -kill"                                      # Kills the job
+alias hjhist="hj -history"                                   # Prints job details, failed and killed tip details
+alias hjlist="hj -list"                                      # List jobs
+
+#Common Hadoop DFS Admin Commands
+alias habal="hadoop balancer"                                # Runs a cluster balancing utility
+alias harep="hadoop dfsadmin -report"                        # Print the hdfs admin report
