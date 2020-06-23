@@ -25,6 +25,13 @@ alias hive-start='$HOME/Data/appData/hive/scripts/run-hive.sh start'
 alias hive-stop='$HOME/Data/appData/hive/scripts/run-hive.sh stop'
 alias hive-connect='$HIVE_HOME/bin/beeline -u jdbc:hive2://localhost:10000/default -n $USER'
 
+# Pig
+export PIG_VERSION=0.17.0_1
+export PIG_HOME=/usr/local/Cellar/pig/0.17.0_1/libexec
+export PATH=$PIG_HOME/bin:$PATH
+alias pig-mr='pig -l $PIG_HOME/logs -4 $PIG_HOME/conf/nolog.conf'
+alias pig-local='pig -x local -l $PIG_HOME/logs -4 $PIG_HOME/conf/nolog.conf'
+
 # Hbase
 export HBASE_VERSION=1.2.6.1
 export HBASE_HOME=/usr/local/Cellar/hbase/1.2.6.1/libexec

@@ -7,6 +7,7 @@ Verify services are correctly installed before proceeding to the next system.
 - Zookeeper
 - Hadoop
 - Hive(Depends on Hadoop)
+- Pig(Depends on Hadoop)
 - Hbase(Depends on Zookeeper, Hadoop)
 - Kafka(Depends on Zookeeper)
 - Spark(Depends on Hadoop, Hive)
