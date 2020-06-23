@@ -11,6 +11,7 @@ Verify services are correctly installed before proceeding to the next system.
 - Hbase(Depends on Zookeeper, Hadoop)
 - Kafka(Depends on Zookeeper)
 - Spark(Depends on Hadoop, Hive)
+- Elasticsearch
 
 It is necessary to source `big-data-env.sh` from your `~/.zshrc` script.
 

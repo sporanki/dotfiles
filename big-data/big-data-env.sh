@@ -55,3 +55,12 @@ export SPARK_HOME=/usr/local/Cellar/apache-spark/2.2.1/libexec
 export SPARK_CONF_DIR=$SPARK_HOME/conf
 export SPARK_JARS_DIR=$SPARK_HOME/jars
 export PATH=$SPARK_HOME/bin:$PATH
+
+# Elasticsearch
+export ELASTICSEARCH_VERSION=7.6.2
+export ELASTICSEARCH_HOME=/usr/local/Cellar/elasticsearch/7.6.2/libexec
+export ELASTICSEARCH_CONF_DIR=$ELASTICSEARCH_HOME/config
+export PATH=$PATH:$ELASTICSEARCH_HOME/bin
+alias elasticsearch-start='elasticsearch --daemonize --pidfile $ELASTICSEARCH_HOME/elasticsearch.pid'
+alias elasticsearch-stop='kill `cat $ELASTICSEARCH_HOME/elasticsearch.pid`'
+alias elasticsearch-restart='elasticsearch-stop && elasticsearch-start'
