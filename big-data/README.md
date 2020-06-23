@@ -12,6 +12,7 @@ Verify services are correctly installed before proceeding to the next system.
 - Kafka(Depends on Zookeeper)
 - Spark(Depends on Hadoop, Hive)
 - Elasticsearch
+- Nifi
 
 It is necessary to source `big-data-env.sh` from your `~/.zshrc` script.
 

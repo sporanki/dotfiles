@@ -64,3 +64,12 @@ export PATH=$PATH:$ELASTICSEARCH_HOME/bin
 alias elasticsearch-start='elasticsearch --daemonize --pidfile $ELASTICSEARCH_HOME/elasticsearch.pid'
 alias elasticsearch-stop='kill `cat $ELASTICSEARCH_HOME/elasticsearch.pid`'
 alias elasticsearch-restart='elasticsearch-stop && elasticsearch-start'
+
+# Nifi
+export NIFI_VERSION=1.11.4
+export NIFI_HOME=/usr/local/Cellar/nifi/1.11.4/libexec
+export NIFI_CONF_DIR=$NIFI_HOME/conf
+export PATH=$PATH:$NIFI_HOME/bin
+alias nifi-start='nifi start'
+alias nifi-stop='nifi stop'
+alias nifi-status='nifi status'
