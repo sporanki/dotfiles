@@ -8,20 +8,21 @@
 # Hadoop
 # Hive
 
-if [[ $(printenv JAVA_HOME) =~ .*jdk-8.* ]]; then
-else
+if [[ ! $(printenv JAVA_HOME) =~ .*jdk-8.* ]]; then
   echo "JAVA_HOME should be set to JDK-8 $(printenv JAVA_HOME)"
   echo "Please fix JAVA_HOME before proceeding" 
 fi
 
-if [[ $(java -version 2>&1) =~ .*\"1\\.8\\..*\" ]]; then
-else
+if [[ ! $(java -version 2>&1 | grep '1.8.0') ]]; then
   echo "Java cmd should be set to JDK-8"
   echo "Please fix java cmd before proceeding"
 fi
 
 # Install Spark 2.2.1
-cp $dev/personal/dotfiles/big-data/spark/rb/apache-spark.rb /usr/local/Homebrew/Library/Taps/homebrew/homebrew-core/Formula/
+brew unpin apache-spark
+brew remove apache-spark
+
+cp $HOME/Developer/personal/dotfiles/big-data/spark/rb/apache-spark.rb /usr/local/Homebrew/Library/Taps/homebrew/homebrew-core/Formula/
 brew install apache-spark
 brew pin apache-spark
 
