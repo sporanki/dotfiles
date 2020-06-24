@@ -7,14 +7,12 @@
 # JAVA_HOME is set correctly before running
 # Hadoop
 
-if [[ $(printenv JAVA_HOME) =~ .*jdk-8.* ]]; then
-else
+if [[ ! $(printenv JAVA_HOME) =~ .*jdk-8.* ]]; then
   echo "JAVA_HOME should be set to JDK-8 $(printenv JAVA_HOME)"
   echo "Please fix JAVA_HOME before proceeding" 
 fi
 
-if [[ $(java -version 2>&1) =~ .*\"1\\.8\\..*\" ]]; then
-else
+if [[ ! $(java -version 2>&1 | grep '1.8.0') ]]; then
   echo "Java cmd should be set to JDK-8"
   echo "Please fix java cmd before proceeding"
 fi
@@ -26,7 +24,10 @@ brew install mysql
 mysql_secure_installation
 
 # Install Hive 1.2.2
-cp $dev/personal/dotfiles/big-data/hive/rb/hive.rb /usr/local/Homebrew/Library/Taps/homebrew/homebrew-core/Formula/
+brew unpin hive
+brew remove hive
+
+cp $HOME/Developer/personal/dotfiles/big-data/hive/rb/hive.rb /usr/local/Homebrew/Library/Taps/homebrew/homebrew-core/Formula/
 brew install hive
 brew pin hive
 
@@ -46,7 +47,7 @@ JDBCUSER='dbuser'
 JDBCPASS='dbpassword'
 sed -e "s|@@HOME@@|$HOME|g 
         s|@@JDBCUSER@@|$JDBCUSER|g
-        s|@@JDBCPASS@@|$JDBCPASS|g" $dev/personal/dotfiles/big-data/hive/hive-site.xml >| /usr/local/Cellar/hive/1.2.2/libexec/conf/hive-site.xml
+        s|@@JDBCPASS@@|$JDBCPASS|g" $HOME/Developer/personal/dotfiles/big-data/hive/hive-site.xml >| /usr/local/Cellar/hive/1.2.2/libexec/conf/hive-site.xml
 
 # verify that the contents of hive-site.xml has proper usr/pass
 
@@ -58,7 +59,7 @@ mysql -u root -p
 ## OR ## 
 # 
 ## Run script
-# cat $dev/personal/dotfiles/big-data/hive/create-metastore.sql | $mysql -u root -p 
+# cat $HOME/Developer/personal/dotfiles/big-data/hive/create-metastore.sql | $mysql -u root -p 
 #
 ###
 
@@ -67,7 +68,7 @@ mkdir -p /usr/local/Cellar/hive/1.2.2/libexec/logs
 
 # Script to start HiveServer2 and HiveMetastore services
 mkdir -p $HOME/Data/appData/hive/scripts
-cp $dev/personal/dotfiles/big-data/hive/run-hive.sh $HOME/Data/appData/hive/scripts
+cp $HOME/Developer/personal/dotfiles/big-data/hive/run-hive.sh $HOME/Data/appData/hive/scripts
 chmod u+x $HOME/Data/appData/hive/scripts/run-hive.sh
 
 # Finished Hive install see hive/README.md to complete

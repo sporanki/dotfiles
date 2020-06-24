@@ -3,7 +3,7 @@
 #file needs to be run from ~/Developer/personal/dotfiles
 
 dev="$HOME/Developer"
-dotfiles="$dev/personal/dotfiles"
+dotfiles="$HOME/Developer/personal/dotfiles"
 musicscripts="$HOME/Library/Music/Scripts"
 
 echo ""

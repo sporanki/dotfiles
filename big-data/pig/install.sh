@@ -7,19 +7,19 @@
 # JAVA_HOME is set correctly before running
 # Hadoop
 
-if [[ $(printenv JAVA_HOME) =~ .*jdk-8.* ]]; then
-else
+if [[ ! $(printenv JAVA_HOME) =~ .*jdk-8.* ]]; then
   echo "JAVA_HOME should be set to JDK-8 $(printenv JAVA_HOME)"
   echo "Please fix JAVA_HOME before proceeding" 
 fi
 
-if [[ $(java -version 2>&1) =~ .*\"1\\.8\\..*\" ]]; then
-else
+if [[ ! $(java -version 2>&1 | grep '1.8.0') ]]; then
   echo "Java cmd should be set to JDK-8"
   echo "Please fix java cmd before proceeding"
 fi
 
 # Install Pig 0.17.0
+brew unpin pig
+brew remove pig
 
 brew install pig
 brew pin pig

@@ -8,8 +8,8 @@ if [[ -z "$repo" ]]; then
   exit
 fi
 
-mkdir -p "$dev/$repo" && \
-  cd "$dev/$repo" && \
+mkdir -p "$HOME/Developer/$repo" && \
+  cd "$HOME/Developer/$repo" && \
   git init && \
   touch 'README.md' 'CHANGELOG.md' && \
   cp "$HOME/.gitignore" '.gitignore' && \

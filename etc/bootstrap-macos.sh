@@ -7,10 +7,9 @@
 # install xcode commandline tools will be prompted for eula
 xcode-select --install
 
-dev="$HOME/Developer"
 pushd .
-mkdir -p $dev
-cd $dev
+mkdir -p $HOME/Developer
+cd $HOME/Developer
 
 echo 'Enter new hostname of the machine (e.g. macbook-paulmillr)'
 read hostname
@@ -54,7 +53,15 @@ if [[ `uname` == 'Darwin' ]]; then
   code --install-extension donjayamanne.githistory
   # Install applescript(itunes scripts)
   code --install-extension idleberg.applescript
-  
+  # Install scala-metals
+  code --install-extension scalameta.metals
+  # Markdown
+  code --install-extension DavidAnson.vscode-markdownlint
+  # Rest client
+  code --install-extension humao.rest-client
+  # Bracket matcher
+  code --install-extension coenraads.bracket-pair-colorizer
+
   # Latest java SDKs https://github.com/AdoptOpenJDK/homebrew-openjdk
   brew tap AdoptOpenJDK/openjdk
   brew cask install adoptopenjdk14-openj9-large

@@ -39,8 +39,8 @@ typeset -gUT INFOPATH infopath
 
 # Commonly used directories.
 dev="$HOME/Developer"
-com="$dev/com"
-pm="$dev/personal"
+com="$HOME/Developer/com"
+pm="$HOME/Developer/personal"
 as="$HOME/Library/Application Support"
 
 # Set the the list of directories that cd searches.
