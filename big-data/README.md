@@ -32,18 +32,4 @@ After installing each service the formula is pinned to preserve the version. It 
 
 `brew update && brew upgrade`
 
-Any changes in the aforementioned folder will be stashed in git when `remote brew update` is invoked.
-
-## Appendix
-
-### Show running java processes
-
-`jps`
-
-### Check if a port is in use in MacOS
-
-`lsof -i :2181`
-
-### Show pinned formulas
-
-`brew list --pinned`
+Any changes in the aforementioned folder will be stashed in git when `brew update` is run.

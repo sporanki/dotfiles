@@ -4,7 +4,7 @@
 
 # if old version installed this is how you remove(brute force)
 # sudo rm -rf /Library/Developer/CommandLineTools
-# install xcode commandline tills will be prompted for eula
+# install xcode commandline tools will be prompted for eula
 xcode-select --install
 
 dev="$HOME/Developer"
@@ -38,8 +38,6 @@ if [[ `uname` == 'Darwin' ]]; then
   fi
 
   # Homebrew packages.
-  # ASP remove python2 brew install diff-so-fancy gnupg htop node pbzip2 python python@2 ruby postgresql wget
-  # 20200620 added coreutils didn't add to path... all conflicting bins should be prefixed with 'g'
   brew install coreutils diff-so-fancy gnupg htop node pbzip2 python python@2 ruby postgresql wget
  
   # install PyChame community edition
@@ -49,19 +47,19 @@ if [[ `uname` == 'Darwin' ]]; then
   brew cask install visual-studio-code
 
   # VS Code extensions
-  #todo verify code is in path at this point may be set in .zshrc
-  # Install vscode extension prettier
+  
+  # prettier
   code --install-extension esbenp.prettier-vscode
   # GIT history
   code --install-extension donjayamanne.githistory
   # Install applescript(itunes scripts)
   code --install-extension idleberg.applescript
   
-  #ASP install latest sdk https://github.com/AdoptOpenJDK/homebrew-openjdk
+  # Latest java SDKs https://github.com/AdoptOpenJDK/homebrew-openjdk
   brew tap AdoptOpenJDK/openjdk
   brew cask install adoptopenjdk14-openj9-large
 
-  #jdk8 needed for spark
+  # JDK 8(plays well with Hadoop 2)
   brew cask install homebrew/cask-versions/adoptopenjdk8
 
   brew install maven
@@ -74,6 +72,9 @@ if [[ `uname` == 'Darwin' ]]; then
 
   # eclipse https://www.code2bits.com/how-to-install-eclipse-on-macos-using-homebrew/
   brew cask install eclipse-jee
+
+  # scala ide
+  brew cask install scala-ide
 
   # show id3 tags in mp3 other formats
   brew install exiftool
