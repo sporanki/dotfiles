@@ -10,7 +10,6 @@ source "$dotfiles/terminal/startup.sh"
 source "$dotfiles/terminal/completion.sh"
 source "$dotfiles/terminal/highlight.sh"
 # echo "Load end\t" $(gdate "+%s-%N")
-
 autoload -U colors && colors
 
 # Load and execute the prompt theming system.
@@ -128,12 +127,6 @@ function gl() {
 # ===============
 # Dev short-cuts.
 # ===============
-
-# Brunch.
-alias bb='brunch build'
-alias bbp='brunch build --production'
-alias bw='brunch w'
-alias bws='brunch w --server'
 
 # Package managers.
 alias nr='npm run'

@@ -1,10 +1,12 @@
 #!/bin/sh
-#set -x
-#file needs to be run from ~/Developer/personal/dotfiles
+
+pushd .
 
 dev="$HOME/Developer"
 dotfiles="$HOME/Developer/personal/dotfiles"
 musicscripts="$HOME/Library/Music/Scripts"
+
+cd $dotfiles
 
 echo ""
 if [ -d "$dotfiles" ]; then
@@ -27,3 +29,5 @@ for location in $(find itunes -name '*.applescript'); do
   file="${file%.applescript}"
   link "$dotfiles/$location" "$musicscripts/$file"
 done
+
+popd .

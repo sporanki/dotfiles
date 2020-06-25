@@ -5,7 +5,6 @@
 dir="$HOME/Developer/personal"
 mkdir -p $dir
 cd $dir
-#ASP git clone --recursive https://github.com/paulmillr/dotfiles.git
 git clone --recursive git@github.com:longshot2k20/dotfiles.git dotfiles
 cd dotfiles
 sh etc/symlink-dotfiles.sh

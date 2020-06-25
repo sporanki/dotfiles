@@ -36,31 +36,45 @@ if [[ `uname` == 'Darwin' ]]; then
       /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
   fi
 
-  # Homebrew packages.
-  brew install coreutils diff-so-fancy gnupg htop node pbzip2 python python@2 ruby postgresql wget
- 
+  # Homebrew packages
+  brews_str="coreutils \
+  diff-so-fancy \
+  gnupg \
+  htop \
+  node \
+  pbzip2 \
+  python \
+  python@2 \
+  ruby \
+  postgresql \
+  tree \
+  jq \
+  wget"
+  brews=($(echo $brews_str))
+  for i in ${brews[@]}
+  do
+    brew install $i
+  done
+    
   # install PyChame community edition
   brew cask install PyCharm-ce
   
   # VS Code
   brew cask install visual-studio-code
 
-  # VS Code extensions
-  
-  # prettier
-  code --install-extension esbenp.prettier-vscode
-  # GIT history
-  code --install-extension donjayamanne.githistory
-  # Install applescript(itunes scripts)
-  code --install-extension idleberg.applescript
-  # Install scala-metals
-  code --install-extension scalameta.metals
-  # Markdown
-  code --install-extension DavidAnson.vscode-markdownlint
-  # Rest client
-  code --install-extension humao.rest-client
-  # Bracket matcher
-  code --install-extension coenraads.bracket-pair-colorizer
+  # VS Code extensions  
+  ext_str="esbenp.prettier-vscode \
+  donjayamanne.githistory \
+  idleberg.applescript \
+  scalameta.metals \
+  DavidAnson.vscode-markdownlint \
+  humao.rest-client \
+  coenraads.bracket-pair-colorizer"
+  exts=($(echo $ext_str))
+  for i in ${exts[@]}
+  do
+    code --install-extension $i
+  done
 
   # Latest java SDKs https://github.com/AdoptOpenJDK/homebrew-openjdk
   brew tap AdoptOpenJDK/openjdk
@@ -69,6 +83,7 @@ if [[ `uname` == 'Darwin' ]]; then
   # JDK 8(plays well with Hadoop 2)
   brew cask install homebrew/cask-versions/adoptopenjdk8
 
+  # maven
   brew install maven
 
   # Install gradle
@@ -95,20 +110,12 @@ if [[ `uname` == 'Darwin' ]]; then
   # amazon music app
   brew cask install amazon-music
 
-  # tree
-  brew install tree
-
-  # jq
-  brew install jq
-
   # scala
   brew install scala
   # scala package manager(not required but may be useful)
   brew install sbt
 
-  #had nothing to do with virtualbox can reinstall
-  #had issues with virtualbox crashing overnite so uninstalled all... may want to use stable releases for this
-  #ASP install docker https://medium.com/@yutafujii_59175/a-complete-one-by-one-guide-to-install-docker-on-your-mac-os-using-homebrew-e818eb4cfc3
+  #install docker https://medium.com/@yutafujii_59175/a-complete-one-by-one-guide-to-install-docker-on-your-mac-os-using-homebrew-e818eb4cfc3
   brew install docker docker-machine
   brew cask install virtualbox
   #-> need password
@@ -118,33 +125,9 @@ if [[ `uname` == 'Darwin' ]]; then
   eval "$(docker-machine env default)"
   docker run hello-world
   docker-machine stop default
-
-  
-  # echo 'Tweaking macOS...'
-    # source 'etc/macos.sh'
-
-  # https://github.com/sindresorhus/quick-look-plugins
-  # echo 'Installing Quick Look plugins...'
-  #   brew tap phinze/homebrew-cask
-  #   brew install caskroom/cask/brew-cask
-  #   brew cask install suspicious-package quicklook-json qlmarkdown qlstephen qlcolorcode
 fi
 
 echo 'Symlinking config files...'
-  source 'etc/symlink-dotfiles.sh'
-  
-    echo 'Applying sublime config...'
-  st=$(pwd)/sublime/packages
-  as="$HOME/Library/Application Support/Sublime Text 3/Packages"
-  asprefs="$as/User/Preferences.sublime-settings"
-  if [[ -d "$as" ]]; then
-    for theme in $st/Theme*; do
-      cp -r $theme $as
-    done
-    rm $asprefs
-    cp -r $st/pm-themes $as
-  else
-    echo "Install Sublime Text https://www.sublimetext.com"
-  fi
+source 'etc/symlink-dotfiles.sh'
 
 popd
