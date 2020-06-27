@@ -22,6 +22,25 @@ It is necessary to source `big-data-env.sh` from your `~/.zshrc` script.
 
 For each service run the commands in the `install.sh` script and then complete the instructions in `README.md`
 
+## Shutdown
+
+Verify processes are stopped via
+
+```console
+jps -ml
+```
+
+Commands to shutdown
+
+```console
+nifi stop
+elasticsearch-stop
+kafka-stop
+stop-yarn.sh
+stop-dfs.sh
+zkServer stop
+```
+
 ## Homebrew
 
 In order to deploy older and slightly customized versions of these services I override the default homebrew-core files located at:

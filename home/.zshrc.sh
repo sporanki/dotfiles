@@ -32,6 +32,10 @@ source "$dotfiles/big-data/big-data-env.sh"
 # ==================================================================
 # = Aliases =
 # ==================================================================
+
+alias showme='defaults write com.apple.finder AppleShowAllFiles YES; killall Finder'
+alias hideme='defaults write com.apple.finder AppleShowAllFiles NO; killall Finder'
+
 # Simple clear command.
 alias cl='clear'
 

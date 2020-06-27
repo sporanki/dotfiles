@@ -7,8 +7,8 @@ export ZOOKEEPER_VERSION=3.4.14
 export PATH=$ZOOKEEPER_HOME/bin:$PATH
 
 # Hadoop
-export HADOOP_VERSION=2.8.1
-export HADOOP_HOME=/usr/local/Cellar/hadoop/2.8.1/libexec
+export HADOOP_VERSION=3.2.1_1
+export HADOOP_HOME=/usr/local/Cellar/hadoop/3.2.1_1/libexec
 export HADOOP_CONF_DIR=$HADOOP_HOME/etc/hadoop/
 export PATH=$HADOOP_HOME/bin:$HADOOP_HOME/sbin:$PATH
 
