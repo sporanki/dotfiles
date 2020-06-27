@@ -40,6 +40,7 @@ if [[ `uname` == 'Darwin' ]]; then
   brews_str="coreutils \
   diff-so-fancy \
   gnupg \
+  grep \
   htop \
   node \
   pbzip2 \

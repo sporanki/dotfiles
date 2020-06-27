@@ -30,6 +30,9 @@ cp $HOME/Developer/personal/dotfiles/big-data/zookeeper/rb/zookeeper.rb /usr/loc
 
 brew install zookeeper
 brew pin zookeeper
+VER=$(brew info zookeeper | ggrep -oP '(?<=^/usr/local/Cellar/zookeeper/).*?(?=\s)')
+
+read -p "Installed zookeeper ${VER} via homebrew"
 
 echo "Installed zookeeper via homebrew"
 
@@ -47,3 +50,5 @@ sed "s|@@HOME@@|$HOME|g" $HOME/Developer/personal/dotfiles/big-data/zookeeper/zo
 echo "Updated zookeeper configs"
 
 echo "Finished Zookeeper install see zookeeper/README.md to complete"
+echo "Update big-data-env.sh with Zookeeper version ${VER}"
+

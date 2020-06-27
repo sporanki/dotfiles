@@ -82,7 +82,8 @@ unsetopt CHECK_JOBS       # Don't report on jobs when shell exit.
 
 if zstyle -t ':prezto:environment:grep' color; then
   export GREP_COLOR='37;45'
-  export GREP_OPTIONS='--color=auto'
+  #ASP causes warning add aliases instead, export GREP_OPTIONS='--color=auto'
+  GREP_OPTIONS=
 fi
 
 #
@@ -283,7 +284,10 @@ alias cp='nocorrect cp'
 alias ebuild='nocorrect ebuild'
 alias gcc='nocorrect gcc'
 alias gist='nocorrect gist'
-alias grep='nocorrect grep'
+#ASP alias grep='nocorrect grep'
+alias grep="nocorrect grep --color=auto"
+alias fgrep="nocorrect fgrep --color=auto"
+alias egrep="nocorrect egrep --color=auto"
 alias heroku='nocorrect heroku'
 alias ln='nocorrect ln'
 alias man='nocorrect man'

@@ -13,7 +13,7 @@ export HADOOP_CONF_DIR=$HADOOP_HOME/etc/hadoop/
 export PATH=$HADOOP_HOME/bin:$HADOOP_HOME/sbin:$PATH
 
 # Hive 
-export HIVE_VERSION=2.3.7
+export HIVE_VERSION=3.1.2_1
 export HIVE_HOME=/usr/local/Cellar/hive/${HIVE_VERSION}/libexec
 export HIVE_CONF_DIR=$HIVE_HOME/conf
 export PATH=$HIVE_HOME/bin:$PATH
