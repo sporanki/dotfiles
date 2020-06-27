@@ -1,14 +1,14 @@
 #!/bin/bash
 
 # ZK
-export ZOOKEEPER_HOME=/usr/local/Cellar/zookeeper/3.4.14/libexec
-export ZOOKEEPER_CONF_DIR=/usr/local/etc/zookeeper
 export ZOOKEEPER_VERSION=3.4.14
+export ZOOKEEPER_HOME=/usr/local/Cellar/zookeeper/${ZOOKEEPER_VERSION}/libexec
+export ZOOKEEPER_CONF_DIR=/usr/local/etc/zookeeper
 export PATH=$ZOOKEEPER_HOME/bin:$PATH
 
 # Hadoop
 export HADOOP_VERSION=3.2.1_1
-export HADOOP_HOME=/usr/local/Cellar/hadoop/3.2.1_1/libexec
+export HADOOP_HOME=/usr/local/Cellar/hadoop/${HADOOP_VERSION}/libexec
 export HADOOP_CONF_DIR=$HADOOP_HOME/etc/hadoop/
 export PATH=$HADOOP_HOME/bin:$HADOOP_HOME/sbin:$PATH
 
@@ -23,14 +23,14 @@ alias hive='$HIVE_HOME/bin/hive'
 
 # Pig
 export PIG_VERSION=0.17.0_1
-export PIG_HOME=/usr/local/Cellar/pig/0.17.0_1/libexec
+export PIG_HOME=/usr/local/Cellar/pig/${PIG_VERSION}/libexec
 export PATH=$PIG_HOME/bin:$PATH
 alias pig-mr='pig -l $PIG_HOME/logs -4 $PIG_HOME/conf/nolog.conf'
 alias pig-local='pig -x local -l $PIG_HOME/logs -4 $PIG_HOME/conf/nolog.conf'
 
 # Hbase
 export HBASE_VERSION=1.2.6.1
-export HBASE_HOME=/usr/local/Cellar/hbase/1.2.6.1/libexec
+export HBASE_HOME=/usr/local/Cellar/hbase/${HBASE_VERSION}/libexec
 export HBASE_CONF_DIR=$HBASE_HOME/conf
 export PATH=$HBASE_HOME/bin:$PATH
 alias hbase-start='$HBASE_HOME/bin/start-hbase.sh'
@@ -38,7 +38,7 @@ alias hbase-stop='$HBASE_HOME/bin/stop-hbase.sh'
 
 # Kafka
 export KAFKA_VERSION=2.3.1
-export KAFKA_HOME=/usr/local/Cellar/kafka/2.3.1/libexec
+export KAFKA_HOME=/usr/local/Cellar/kafka/${KAFKA_VERSION}/libexec
 export KAFKA_CONF_DIR=/usr/local/etc/kafka
 export PATH=$KAFKA_HOME/bin:$PATH
 alias kafka-start='$HOME/Data/appData/kafka/scripts/run-kafka.sh start'
@@ -47,14 +47,14 @@ alias topic='kafka-topics --zookeeper localhost:2181'
 
 # Spark
 export SPARK_VERSION=2.2.1
-export SPARK_HOME=/usr/local/Cellar/apache-spark/2.2.1/libexec
+export SPARK_HOME=/usr/local/Cellar/apache-spark/${SPARK_VERSION}/libexec
 export SPARK_CONF_DIR=$SPARK_HOME/conf
 export SPARK_JARS_DIR=$SPARK_HOME/jars
 export PATH=$SPARK_HOME/bin:$PATH
 
 # Elasticsearch
 export ELASTICSEARCH_VERSION=7.6.2
-export ELASTICSEARCH_HOME=/usr/local/Cellar/elasticsearch/7.6.2/libexec
+export ELASTICSEARCH_HOME=/usr/local/Cellar/elasticsearch/${ELASTICSEARCH_VERSION}/libexec
 export ELASTICSEARCH_CONF_DIR=$ELASTICSEARCH_HOME/config
 export PATH=$PATH:$ELASTICSEARCH_HOME/bin
 alias elasticsearch-start='elasticsearch --daemonize --pidfile $ELASTICSEARCH_HOME/elasticsearch.pid'
@@ -63,7 +63,7 @@ alias elasticsearch-restart='elasticsearch-stop && elasticsearch-start'
 
 # Nifi
 export NIFI_VERSION=1.11.4
-export NIFI_HOME=/usr/local/Cellar/nifi/1.11.4/libexec
+export NIFI_HOME=/usr/local/Cellar/nifi/${NIFI_VERSION}/libexec
 export NIFI_CONF_DIR=$NIFI_HOME/conf
 export PATH=$PATH:$NIFI_HOME/bin
 alias nifi-start='nifi start'
