@@ -28,7 +28,7 @@ elasticsearch-restart
 
 ## Validate in browser
 
-http://localhost:9200
+<http://localhost:9200>
 
 ```console
 {
