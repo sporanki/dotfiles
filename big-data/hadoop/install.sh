@@ -19,6 +19,8 @@ brew update && brew upgrade
 brew unpin Hadoop
 brew remove Hadoop
 
+read -p "If upgrading please verify no previous hadoop processing are running before proceeding"
+
 #cp $HOME/Developer/personal/dotfiles/big-data/hadoop/rb/hadoop.rb /usr/local/Homebrew/Library/Taps/homebrew/homebrew-core/Formula/
 brew install hadoop
 brew pin hadoop
@@ -48,7 +50,9 @@ read -p "You are about to re-create your hdfs filesystem do you wish to continue
 rm -rf $HOME/Data/appData/hadoop/dfs/name/*
 rm -rf $HOME/Data/appData/hadoop/dfs/data/*
 
+# hfs-site.xml Determines where on the local filesystem the DFS name node should store the name table(fsimage)
 mkdir -p $HOME/Data/appData/hadoop/dfs/name
+# hfs-site.xml Determines where on the local filesystem an DFS data node should store its blocks.
 mkdir -p $HOME/Data/appData/hadoop/dfs/data
 
 read -p "You are about to format the hdfs filesystem"

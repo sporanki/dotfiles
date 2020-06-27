@@ -34,11 +34,12 @@ Namenode UI: http://localhost:9870/
 Resource Manager UI: http://localhost:8088/
 
 ```console
-hadoop hadoop3* ❯ jps -ml
-37029 org.apache.hadoop.hdfs.server.namenode.SecondaryNameNode
-36794 org.apache.hadoop.hdfs.server.namenode.NameNode
-37758 sun.tools.jps.Jps -ml
-36895 org.apache.hadoop.hdfs.server.datanode.DataNode
+44625 sun.tools.jps.Jps -ml
+44450 org.apache.hadoop.yarn.server.resourcemanager.ResourceManager
+44261 org.apache.hadoop.hdfs.server.namenode.SecondaryNameNode
+44550 org.apache.hadoop.yarn.server.nodemanager.NodeManager
+44023 org.apache.hadoop.hdfs.server.namenode.NameNode
+44124 org.apache.hadoop.hdfs.server.datanode.DataNode
 ```
 
 ```console
