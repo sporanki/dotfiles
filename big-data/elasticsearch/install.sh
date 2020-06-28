@@ -10,19 +10,29 @@ if [[ ! -d "/Library/Java/JavaVirtualMachines/adoptopenjdk-8.jdk/Contents/Home" 
   echo "JDK-8 must be installed on machine" && exit 1 
 fi
 
-# Install Elasticsearch 7.6.2
+# Install Elasticsearch
+brew update && brew upgrade
 brew unpin elasticsearch
 brew remove elasticsearch
+rm -Rf /usr/local/etc/elasticsearch
 
 brew install elasticsearch
 brew pin elasticsearch
+VER=$(brew info elasticsearch | ggrep -oP '(?<=^/usr/local/Cellar/elasticsearch/).*?(?=\s)')
+read -p "Installed elasticsearch ${VER} via homebrew(enter)"
+
+read -p "Do you want to remove existing elasticsearch data?[Nn]" -n 1 -r
+[[ $REPLY =~ ^[Yy]$ ]] && rm -rf $HOME/Data/appData/elasticsearch/data/*
+echo
 
 # backup configs
-cp -p /usr/local/Cellar/elasticsearch/7.6.2/libexec/config/elasticsearch.yml /usr/local/Cellar/elasticsearch/7.6.2/libexec/config/elasticsearch.yml.og
+cp -p /usr/local/Cellar/elasticsearch/${VER}/libexec/config/elasticsearch.yml /usr/local/Cellar/elasticsearch/${VER}/libexec/config/elasticsearch.yml.og
 
 # update configs
-sed "s|@@HOME@@|$HOME|g" $HOME/Developer/personal/dotfiles/big-data/elasticsearch/elasticsearch.yml >| /usr/local/Cellar/elasticsearch/7.6.2/libexec/config/elasticsearch.yml
+sed "s|@@HOME@@|$HOME|g" $HOME/Developer/personal/dotfiles/big-data/elasticsearch/elasticsearch.yml >| /usr/local/Cellar/elasticsearch/${VER}/libexec/config/elasticsearch.yml
 
-mkdir -p /Users/keith/Data/appData/elasticsearch/data
-$ mkdir -p /usr/local/Cellar/elasticsearch/6.2.4/libexec/logs
-# Finished Elasticsearch install see Elasticsearch/README.md to complete
+mkdir -p /usr/local/Cellar/elasticsearch/${VER}/libexec/logs
+
+echo "Finished Elasticsearch install see elasticsearch/README.md to complete"
+echo "Update big-data-env.sh with Elasticsearch version ${VER}"
+

@@ -57,8 +57,9 @@ if [[ ! -f "/usr/local/Cellar/hive/${VER}/libexec/lib/$DRIVER_NAME.jar" ]]; then
 fi
 
 read -p "Do you want to remove the existing metastore?[Nn]" -r
-[[ $REPLY =~ ^[Yy]$ ]] && echo "Enter DB root password" && cat $HOME/Developer/personal/dotfiles/big-data/hive/delete-metastore.sql | mysql -u root -p || echo
+[[ $REPLY =~ ^[Yy]$ ]] && echo "Enter DB root password" && cat $HOME/Developer/personal/dotfiles/big-data/hive/delete-metastore.sql | mysql -u root -p
 [[ ! $? -eq 0 ]] && echo "Wrong password" && exit 1 
+echo
 
 read -p "Create the metastore database and user(enter)"
 echo "Enter root DB password"

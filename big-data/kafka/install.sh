@@ -29,6 +29,7 @@ brew pin kafka
 
 read -p "Do you want to remove the existing write ahead logs?[Nn]" -r
 [[ $REPLY =~ ^[Yy]$ ]] && rm -Rf $HOME/Data/appData/kafka/data/broker0/kafka-logs/*; rm -Rf $HOME/Data/appData/kafka/data/broker1/kafka-logs/*
+echo
 
 #Creating 2 brokers 0->:9093,1->:9094
 #create log folder
