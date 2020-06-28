@@ -6,12 +6,8 @@
 # jdk8 is installed and 
 # JAVA_HOME is set correctly before running
 
-if [[ ! $(printenv JAVA_HOME) =~ .*jdk-8.* ]]; then
-  echo "JAVA_HOME should be set to JDK-8 $(printenv JAVA_HOME)" && exit 1 
-fi
-
-if [[ ! $(java -version 2>&1 | grep '1.8.0') ]]; then
-  echo "Java cmd should be set to JDK-8" && exit 1
+if [[ ! -d "/Library/Java/JavaVirtualMachines/adoptopenjdk-8.jdk/Contents/Home" ]]; then
+  echo "JDK-8 must be installed on machine" && exit 1 
 fi
 
 # Install Zookeeper
@@ -32,11 +28,11 @@ brew install zookeeper
 brew pin zookeeper
 VER=$(brew info zookeeper | ggrep -oP '(?<=^/usr/local/Cellar/zookeeper/).*?(?=\s)')
 
-read -p "Installed zookeeper ${VER} via homebrew"
+read -p "Installed zookeeper ${VER} via homebrew(enter)"
 
 echo "Installed zookeeper via homebrew"
 
-read -p "Do you want to remove existing zookeeper data?[Yy]" -n 1 -r
+read -p "Do you want to remove existing zookeeper data?[Nn]" -n 1 -r
 [[ $REPLY =~ ^[Yy]$ ]] && rm -rf $HOME/Data/appData/zookeeper/data/* || echo
 
 mkdir -p $HOME/Data/appData/zookeeper/data

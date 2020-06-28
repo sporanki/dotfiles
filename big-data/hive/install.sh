@@ -11,15 +11,12 @@ DRIVER_URL="https://dev.mysql.com/get/Downloads/Connector-J/mysql-connector-java
 # JAVA_HOME is set correctly before running
 # Hive
 
-if [[ ! $(printenv JAVA_HOME) =~ .*jdk-8.* ]]; then
-  echo "JAVA_HOME should be set to JDK-8 $(printenv JAVA_HOME)" && exit 1 
-fi
-
-if [[ ! $(java -version 2>&1 | grep '1.8.0') ]]; then
-  echo "Java cmd should be set to JDK-8" && exit 1
+if [[ ! -d "/Library/Java/JavaVirtualMachines/adoptopenjdk-8.jdk/Contents/Home" ]]; then
+  echo "JDK-8 must be installed on machine" && exit 1 
 fi
 
 # Install Hive
+brew update && brew upgrade
 brew unpin hive
 brew remove hive
 
@@ -59,7 +56,7 @@ if [[ ! -f "/usr/local/Cellar/hive/${VER}/libexec/lib/$DRIVER_NAME.jar" ]]; then
   [[ ! $? -eq 0 ]] && echo "Unable to install jdbc driver" && exit 1
 fi
 
-read -p "Do you want to remove the existing metastore?[Yy]" -r
+read -p "Do you want to remove the existing metastore?[Nn]" -r
 [[ $REPLY =~ ^[Yy]$ ]] && echo "Enter DB root password" && cat $HOME/Developer/personal/dotfiles/big-data/hive/delete-metastore.sql | mysql -u root -p || echo
 [[ ! $? -eq 0 ]] && echo "Wrong password" && exit 1 
 

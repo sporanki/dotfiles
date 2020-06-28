@@ -79,10 +79,9 @@ if [[ `uname` == 'Darwin' ]]; then
 
   # Latest java SDKs https://github.com/AdoptOpenJDK/homebrew-openjdk
   brew tap AdoptOpenJDK/openjdk
+  brew cask install adoptopenjdk8
+  brew cask install adoptopenjdk11
   brew cask install adoptopenjdk14-openj9-large
-
-  # JDK 8(plays well with Hadoop 2)
-  brew cask install homebrew/cask-versions/adoptopenjdk8
 
   # maven
   brew install maven

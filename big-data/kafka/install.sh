@@ -7,12 +7,8 @@
 # JAVA_HOME is set correctly before running
 # Zookeeper
 
-if [[ ! $(printenv JAVA_HOME) =~ .*jdk-8.* ]]; then
-  echo "JAVA_HOME should be set to JDK-8 $(printenv JAVA_HOME)" && exit 1 
-fi
-
-if [[ ! $(java -version 2>&1 | grep '1.8.0') ]]; then
-  echo "Java cmd should be set to JDK-8" && exit 1
+if [[ ! -d "/Library/Java/JavaVirtualMachines/adoptopenjdk-8.jdk/Contents/Home" ]]; then
+  echo "JDK-8 must be installed on machine" && exit 1 
 fi
 
 # Install Kafka
@@ -31,7 +27,7 @@ echo "Killed existing processes on 9094"
 brew install kafka
 brew pin kafka
 
-read -p "Do you want to remove the existing write ahead logs?[Yy]" -r
+read -p "Do you want to remove the existing write ahead logs?[Nn]" -r
 [[ $REPLY =~ ^[Yy]$ ]] && rm -Rf $HOME/Data/appData/kafka/data/broker0/kafka-logs/*; rm -Rf $HOME/Data/appData/kafka/data/broker1/kafka-logs/*
 
 #Creating 2 brokers 0->:9093,1->:9094

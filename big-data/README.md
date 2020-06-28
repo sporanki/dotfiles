@@ -26,19 +26,24 @@ For each service run the commands in the `install.sh` script and then complete t
 
 Verify processes are stopped via
 
-```console
-jps -ml
-```
-
 Commands to shutdown
 
 ```console
 nifi stop
 elasticsearch-stop
 kafka-stop
-stop-yarn.sh
-stop-dfs.sh
+hive-stop
+hbase-stop
+stop-all.sh
 zkServer stop
+```
+
+```console
+jps -ml
+```
+
+```console
+ps -ef | grep -i java
 ```
 
 ## Homebrew

@@ -46,7 +46,7 @@ alias kafka-stop='$HOME/Data/appData/kafka/scripts/run-kafka.sh stop'
 alias topic='kafka-topics --zookeeper localhost:2181'
 
 # Spark
-export SPARK_VERSION=2.2.1
+export SPARK_VERSION=3.0.0
 export SPARK_HOME=/usr/local/Cellar/apache-spark/${SPARK_VERSION}/libexec
 export SPARK_CONF_DIR=$SPARK_HOME/conf
 export SPARK_JARS_DIR=$SPARK_HOME/jars
