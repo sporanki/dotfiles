@@ -22,6 +22,22 @@ It is necessary to source `big-data-env.sh` from your `~/.zshrc` script.
 
 For each service run the commands in the `install.sh` script and then complete the instructions in `README.md`
 
+## Startup (No need to run all service can be cherry picked)
+
+Verify processes are stopped via
+
+Commands to start up
+
+```console
+zkServer start
+start-all.sh
+hive-start
+hbase-start
+kafka-start
+elasticsearch-start
+nifi start
+```
+
 ## Shutdown
 
 Verify processes are stopped via
