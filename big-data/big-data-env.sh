@@ -29,7 +29,6 @@ alias pig-mr='pig -l $PIG_HOME/logs -4 $PIG_HOME/conf/nolog.conf'
 alias pig-local='pig -x local -l $PIG_HOME/logs -4 $PIG_HOME/conf/nolog.conf'
 
 # Hbase
-#export HBASE_VERSION=1.2.6.1
 export HBASE_VERSION=1.3.5
 export HBASE_HOME=/usr/local/Cellar/hbase/${HBASE_VERSION}/libexec
 export HBASE_CONF_DIR=$HBASE_HOME/conf
@@ -38,7 +37,7 @@ alias hbase-start='$HBASE_HOME/bin/start-hbase.sh'
 alias hbase-stop='$HBASE_HOME/bin/stop-hbase.sh'
 
 # Kafka
-export KAFKA_VERSION=2.3.1
+export KAFKA_VERSION=2.5.0
 export KAFKA_HOME=/usr/local/Cellar/kafka/${KAFKA_VERSION}/libexec
 export KAFKA_CONF_DIR=/usr/local/etc/kafka
 export PATH=$KAFKA_HOME/bin:$PATH

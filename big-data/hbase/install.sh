@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# HBase 1.2.6.1
+# HBase 1.3.5
 
 # PRE-REQS
 # jdk8 is installed and 
@@ -16,12 +16,10 @@ if [[ ! $(java -version 2>&1 | grep '1.8.0') ]]; then
   echo "Java cmd should be set to JDK-8" && exit 1
 fi
 
-# Install HBase 1.2.6.1
-# Install HBase 1.3.5
+# Install HBase 
 brew unpin hbase
 brew remove hbase
 
-#cp $HOME/Developer/personal/dotfiles/big-data/hbase/rb/hbase.rb /usr/local/Homebrew/Library/Taps/homebrew/homebrew-core/Formula/
 brew install hbase
 brew pin hbase
 VER=$(brew info hbase | ggrep -oP '(?<=^/usr/local/Cellar/hbase/).*?(?=\s)')
@@ -35,4 +33,5 @@ cp -p /usr/local/Cellar/hbase/${VER}/libexec/conf/hbase-site.xml /usr/local/Cell
 cp -p $HOME/Developer/personal/dotfiles/big-data/hbase/hbase-env.sh /usr/local/Cellar/hbase/${VER}/libexec/conf/hbase-env.sh
 cp -p $HOME/Developer/personal/dotfiles/big-data/hbase/hbase-site.xml /usr/local/Cellar/hbase/${VER}/libexec/conf/hbase-site.xml
 
-# Finished HBase install see hbase/README.md to complete
+echo "Finished HBase install see hbase/README.md to complete"
+echo "Update big-data-env.sh with HBase version ${VER}"

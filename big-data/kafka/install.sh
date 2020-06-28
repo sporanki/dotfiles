@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Kafka 2.3.1
+# Kafka 2.5.0
 
 # PRE-REQS
 # jdk8 is installed and 
@@ -15,13 +15,24 @@ if [[ ! $(java -version 2>&1 | grep '1.8.0') ]]; then
   echo "Java cmd should be set to JDK-8" && exit 1
 fi
 
-# Install Kafka 2.3.1
+# Install Kafka
 brew unpin kafka
 brew remove kafka
+rm -rf /usr/local/etc/kafka
 
-cp $HOME/Developer/personal/dotfiles/big-data/kafka/rb/kafka.rb /usr/local/Homebrew/Library/Taps/homebrew/homebrew-core/Formula/
+lsof -i :9093 | grep -i java | awk '{print $2}' | xargs kill
+echo "Killed existing processes on 9093"
+[[ ! -z $(lsof -i :9093 | grep -i java | awk '{print $2}') ]] && echo "Process still running on 9093 exiting" && exit 1
+
+lsof -i :9094 | grep -i java | awk '{print $2}' | xargs kill
+echo "Killed existing processes on 9094"
+[[ ! -z $(lsof -i :9094 | grep -i java | awk '{print $2}') ]] && echo "Process still running on 9094 exiting" && exit 1
+
 brew install kafka
 brew pin kafka
+
+read -p "Do you want to remove the existing write ahead logs?[Yy]" -r
+[[ $REPLY =~ ^[Yy]$ ]] && rm -Rf $HOME/Data/appData/kafka/data/broker0/kafka-logs/*; rm -Rf $HOME/Data/appData/kafka/data/broker1/kafka-logs/*
 
 #Creating 2 brokers 0->:9093,1->:9094
 #create log folder
@@ -36,4 +47,5 @@ mkdir -p $HOME/Data/appData/kafka/scripts
 cp $HOME/Developer/personal/dotfiles/big-data/kafka/run-kafka.sh $HOME/Data/appData/kafka/scripts
 chmod u+x $HOME/Data/appData/kafka/scripts/run-kafka.sh
 
-### Finished Kafka install see kafka/README.md to complete
+echo "Finished Kafka install see hbase/README.md to complete"
+echo "Update big-data-env.sh with Kafka version ${VER}"

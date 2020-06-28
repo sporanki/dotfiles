@@ -28,4 +28,5 @@ case $1 in
     ;;
   *)
     echo "USAGE: run-hive.sh [start|stop]"
+    exit 1
 esac

@@ -1,10 +1,5 @@
 #/bin/bash
 
-export KAFKA_VERSION=2.3.1
-export KAFKA_HOME=/usr/local/Cellar/kafka/2.3.1/libexec
-export KAFKA_CONF_DIR=/usr/local/etc/kafka
-export PATH=$KAFKA_HOME/bin:$PATH
-
 case $1 in
   start)
     echo "Starting Kafka Broker with id: 0"
@@ -17,4 +12,8 @@ case $1 in
     echo "Stopping Kafka Brokers"
     $KAFKA_HOME/bin/kafka-server-stop.sh
   ;;
+  
+  *)
+    echo "USAGE: run-kafka.sh [start|stop]"
+    exit 1
 esac

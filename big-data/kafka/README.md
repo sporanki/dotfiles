@@ -3,9 +3,9 @@
 ## Directories
 
 ```console
-/usr/local/Cellar/kafka/2.3.1/libexec
+/usr/local/Cellar/kafka/2.5.0/libexec
 /usr/local/etc/kafka
-/usr/local/Cellar/kafka/2.3.1/libexec/logs
+/usr/local/Cellar/kafka/2.5.0/libexec/logs
 ```
 
 ## Data write-ahead logs
@@ -36,8 +36,8 @@ kafka-stop
 ```console
 kafka-topics --zookeeper localhost:2181 --create --replication-factor 1 --partitions 2 --topic first-topic
 kafka-topics --zookeeper localhost:2181 --list
-# open two terminal w/vertical split
-# enter commands in producer terminal you should see the messages consumed in the consumer terminal
+# open two terminals side by side
+# messages entered in producer terminal should be displayed in consumer terminal
 kafka-console-producer --broker-list localhost:9093,localhost:9094 --topic first-topic
 kafka-console-consumer --bootstrap-server localhost:9093,localhost:9094 --topic first-topic --from-beginning
 ```

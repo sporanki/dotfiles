@@ -28,4 +28,5 @@ mkdir -p /usr/local/Cellar/pig/${VER}/libexec/logs
 mkdir -p /usr/local/Cellar/pig/${VER}/libexec/conf
 echo "log4j.rootLogger=fatal" > /usr/local/Cellar/pig/${VER}/libexec/conf/nolog.conf
 
-# Finished Pig install see pig/README.md to complete
+echo "Finished Pig install see pig/README.md to complete"
+echo "Update big-data-env.sh with Pig version ${VER}"
