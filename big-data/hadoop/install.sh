@@ -24,7 +24,7 @@ read -p "Please verify hadoop processes are NOT running before continuing(ctrl+c
 brew install hadoop
 brew pin hadoop
 VER=$(brew info hadoop | ggrep -oP '(?<=^/usr/local/Cellar/hadoop/).*?(?=\s)')
-read -p "Installed hadoop ${VER} via homebrew"
+read -p "Installed hadoop ${VER} via homebrew(enter)"
 
 # backup configs
 cp -p /usr/local/Cellar/hadoop/${VER}/libexec/etc/hadoop/hadoop-env.sh /usr/local/Cellar/hadoop/${VER}/libexec/etc/hadoop/hadoop-env.sh.og 
@@ -54,9 +54,9 @@ mkdir -p $HOME/Data/appData/hadoop/dfs/name
 # hfs-site.xml Determines where on the local filesystem an DFS data node should store its blocks.
 mkdir -p $HOME/Data/appData/hadoop/dfs/data
 
-read -p "About to format the hdfs filesystem"
+read -p "About to format the hdfs filesystem(enter)"
 hdfs namenode -format
-read -p "Done formatting the hdfs filesystem"
+read -p "Done formatting the hdfs filesystem(enter)"
 
 echo "Finished Hadoop install see hadoop/README.md to complete"
 echo "Update big-data-env.sh with HADOOP version ${VER}"

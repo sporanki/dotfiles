@@ -14,7 +14,6 @@ case $1 in
     ;;
  
   stop)
-    # there are issues here... doesn't seem to kill
     hiveserver2_pid=`cat $HIVE_HOME/hiveserver2.pid`
     echo "Stopping hiveserver2...$hiveserver2_pid"
     kill $hiveserver2_pid
@@ -27,4 +26,6 @@ case $1 in
     sleep 10
     rm $HIVE_HOME/metastore_pid
     ;;
+  *)
+    echo "USAGE: run-hive.sh [start|stop]"
 esac

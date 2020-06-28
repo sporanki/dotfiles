@@ -98,7 +98,7 @@ Time taken: 0.094 seconds, Fetched: 1 row(s)
 bin ❯ hadoop fs -ls /apps/hive/warehouse/test
 20/06/26 23:16:22 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
 Found 1 items
--rwxr-xr-x   1 apanizo supergroup         13 2020-06-26 23:14 /apps/hive/warehouse/test/000000_0
+-rwxr-xr-x   1 user supergroup         13 2020-06-26 23:14 /apps/hive/warehouse/test/000000_0
 ```
 
 # Appendix
