@@ -21,9 +21,11 @@ brew remove pig
 
 brew install pig
 brew pin pig
+VER=$(brew info pig | ggrep -oP '(?<=^/usr/local/Cellar/pig/).*?(?=\s)')
+read -p "Installed pig \"${VER}\" via homebrew(enter)"
 
-mkdir -p /usr/local/Cellar/pig/0.17.0_1/libexec/logs
-mkdir -p /usr/local/Cellar/pig/0.17.0_1/libexec/conf
-echo "log4j.rootLogger=fatal" > /usr/local/Cellar/pig/0.17.0_1/libexec/conf/nolog.conf
+mkdir -p /usr/local/Cellar/pig/${VER}/libexec/logs
+mkdir -p /usr/local/Cellar/pig/${VER}/libexec/conf
+echo "log4j.rootLogger=fatal" > /usr/local/Cellar/pig/${VER}/libexec/conf/nolog.conf
 
 # Finished Pig install see pig/README.md to complete

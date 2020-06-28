@@ -29,7 +29,8 @@ alias pig-mr='pig -l $PIG_HOME/logs -4 $PIG_HOME/conf/nolog.conf'
 alias pig-local='pig -x local -l $PIG_HOME/logs -4 $PIG_HOME/conf/nolog.conf'
 
 # Hbase
-export HBASE_VERSION=1.2.6.1
+#export HBASE_VERSION=1.2.6.1
+export HBASE_VERSION=1.3.5
 export HBASE_HOME=/usr/local/Cellar/hbase/${HBASE_VERSION}/libexec
 export HBASE_CONF_DIR=$HBASE_HOME/conf
 export PATH=$HBASE_HOME/bin:$PATH
