@@ -22,19 +22,18 @@ export GPG_TTY=$(tty) # For git commit signing
 
 export HOMEBREW_EDITOR=code
 
+### Should be in .private-env
 # set default java_home(can be overriden in current shell with jdk function)
 export JAVA_HOME=`/usr/libexec/java_home -v 1.8.0_252`
 
 # load big-data env's(hadoop, spark, etc.)
 source "$dotfiles/big-data/big-data-env.sh"
+###
 
 ###
 # ==================================================================
 # = Aliases =
 # ==================================================================
-
-alias showme='defaults write com.apple.finder AppleShowAllFiles YES; killall Finder'
-alias hideme='defaults write com.apple.finder AppleShowAllFiles NO; killall Finder'
 
 # Simple clear command.
 alias cl='clear'
@@ -44,6 +43,9 @@ alias cl='clear'
 
 # Some MacOS-only stuff.
 if [[ "$OSTYPE" == darwin* ]]; then
+  alias showme='defaults write com.apple.finder AppleShowAllFiles YES; killall Finder'
+  alias hideme='defaults write com.apple.finder AppleShowAllFiles NO; killall Finder'
+
   # Short-cuts for copy-paste.
   alias c='pbcopy'
   alias p='pbpaste'
