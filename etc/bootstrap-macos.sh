@@ -8,6 +8,7 @@
 xcode-select --install
 
 pushd .
+
 mkdir -p $HOME/Developer
 cd $HOME/Developer
 
