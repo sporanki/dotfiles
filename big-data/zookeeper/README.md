@@ -5,7 +5,7 @@
 ```console
 $HOME/Data/appData/zookeeper/data
 /usr/local/etc/zookeeper
-/usr/local/Cellar/zookeeper/3.4.14/
+/usr/local/Cellar/zookeeper/3.5.8/
 /usr/local/var/log/zookeeper/zookeeper.log
 ```
 

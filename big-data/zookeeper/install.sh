@@ -1,13 +1,13 @@
 #!/bin/bash
 
-# Zookeeper 3.4.14
+# Zookeeper 3.5.8
 
 # PRE-REQS
 # jdk8 is installed and 
 # JAVA_HOME is set correctly before running
 
-if [[ ! -d "/Library/Java/JavaVirtualMachines/adoptopenjdk-8.jdk/Contents/Home" ]]; then
-  echo "JDK-8 must be installed on machine" && exit 1 
+if [[ ! -d "/Library/Java/JavaVirtualMachines/adoptopenjdk-11.jdk/Contents/Home" ]]; then
+  echo "JDK-11 must be installed on machine" && exit 1 
 fi
 
 # Install Zookeeper
@@ -22,7 +22,7 @@ echo "Killed existing processes on 2181"
 [[ ! -z $(lsof -i :21810 | grep -i java | awk '{print $2}') ]] && echo "Process still running on 2181 exiting" && exit 1
 
 echo "Copy local zookeeper brew file to override latest"
-cp $HOME/Developer/personal/dotfiles/big-data/zookeeper/rb/zookeeper.rb /usr/local/Homebrew/Library/Taps/homebrew/homebrew-core/Formula/
+#cp $HOME/Developer/personal/dotfiles/big-data/zookeeper/rb/zookeeper.rb /usr/local/Homebrew/Library/Taps/homebrew/homebrew-core/Formula/
 
 brew install zookeeper
 brew pin zookeeper
@@ -36,12 +36,14 @@ read -p "Do you want to remove existing zookeeper data?[Nn]" -n 1 -r
 [[ $REPLY =~ ^[Yy]$ ]] && rm -rf $HOME/Data/appData/zookeeper/data/* || echo
 
 mkdir -p $HOME/Data/appData/zookeeper/data
-cp -p /usr/local/etc/zookeeper/zoo.cfg /usr/local/etc/zookeeper/zoo.cfg.og 
+cp -p /usr/local/etc/zookeeper/zoo.cfg /usr/local/etc/zookeeper/zoo.cfg.og
 
 echo "Backed up hadoop default configs"
 
 # update template and cp
 sed "s|@@HOME@@|$HOME|g" $HOME/Developer/personal/dotfiles/big-data/zookeeper/zoo.cfg >| /usr/local/etc/zookeeper/zoo.cfg 
+# cp -p $HOME/Developer/personal/dotfiles/big-data/zookeeper/zkEnv.sh /usr/local/Cellar/zookeeper/3.5.8/libexec/bin/zkEnv.sh
+# chmod u+x /usr/local/Cellar/zookeeper/3.5.8/libexec/zkEnv.sh
 
 echo "Updated zookeeper configs"
 
