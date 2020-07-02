@@ -5,12 +5,16 @@ export ZOOKEEPER_VERSION=3.5.8
 export ZOOKEEPER_HOME=/usr/local/Cellar/zookeeper/${ZOOKEEPER_VERSION}/libexec
 export ZOOKEEPER_CONF_DIR=/usr/local/etc/zookeeper
 export PATH=$ZOOKEEPER_HOME/bin:$PATH
+alias zoo-start='zkServer start'
+alias zoo-stop='zkServer stop'
 
 # Hadoop
 export HADOOP_VERSION=3.2.1_1
 export HADOOP_HOME=/usr/local/Cellar/hadoop/${HADOOP_VERSION}/libexec
 export HADOOP_CONF_DIR=$HADOOP_HOME/etc/hadoop/
 export PATH=$HADOOP_HOME/bin:$HADOOP_HOME/sbin:$PATH
+alias hadoop-start='start-all.sh'
+alias hadoop-stop='stop-all.sh'
 
 # Hive 
 export HIVE_VERSION=3.1.2_1

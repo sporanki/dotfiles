@@ -1,8 +1,6 @@
 # Big Data on MacOS
 
-This project installs a pseudo-distributed hadoop ecosystem.
-
-This install uses hdfs.
+This project installs a pseudo-distributed hadoop ecosystem using hdfs.
 
 Services are configured to integrate with each other.
 
@@ -11,7 +9,7 @@ Verify services are correctly installed before proceeding to the next service.
 - Zookeeper
 - Hadoop
 - Hive(Depends on Hadoop)
-- X Pig(Depends on Hadoop) Currently not compatible with Hadoop 3
+- \*Pig(Depends on Hadoop) Not currently compatible with Hadoop 3 this system should be skipped
 - Hbase(Depends on Zookeeper, Hadoop)
 - Kafka(Depends on Zookeeper)
 - Spark(Depends on Hadoop, Hive)
@@ -29,13 +27,13 @@ Verify processes are stopped via
 Commands to start up
 
 ```console
-zkServer start
-start-all.sh
+zoo-start
+hadoop-start
 hive-start
 hbase-start
 kafka-start
 elasticsearch-start
-nifi start
+nifi-start
 ```
 
 ## Shutdown
@@ -45,18 +43,22 @@ Verify processes are stopped via
 Commands to shutdown
 
 ```console
-nifi stop
+nifi-stop
 elasticsearch-stop
 kafka-stop
 hive-stop
 hbase-stop
-stop-all.sh
-zkServer stop
+hadoop-stop
+zoo-stop
 ```
+
+List java processes
 
 ```console
 jps -ml
 ```
+
+GREP on java processes
 
 ```console
 ps -ef | grep -i java
