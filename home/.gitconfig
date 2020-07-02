@@ -1,10 +1,10 @@
 [user]
-  name = longshot2k20
-  email = longshot2k20@gmail.com
+  name = Suren Poranki
+  email = sporanki@gmail.com
 #  signingkey = ZZZZZZZZZZZZZZZZ
 
 [github]
-  user = longshot2k20
+  user = sporanki
 
 [alias]
   discard = reset --hard HEAD
