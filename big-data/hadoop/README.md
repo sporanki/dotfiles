@@ -108,7 +108,7 @@ If not enabled you have to enable via the UI.
 
 ```
 1.Open the Apple menu in the upper left corner of the screen, and select "System Preferences...".
-2.Under "Internet & Wireless", select "Sharing".
+2.Select "Sharing" icon.
 3.In the left column of services, enable "Remote Login".
 4.Highlight the "Remote Login" service and enable access for the users you would like to have SSH access.
 5.You can select all users, or specific users by selecting "Only these users:" and adding the appropriate users by clicking "+".

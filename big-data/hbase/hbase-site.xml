@@ -51,5 +51,9 @@
     <name>hbase.master.dns.interface</name>
     <value>lo0</value>
   </property>
+  <property>
+    <name>hbase.unsafe.stream.capability.enforce</name>
+  <value>false</value>
+</property>
 
 </configuration>

@@ -42,8 +42,8 @@ echo "Backed up hadoop default configs"
 
 # update template and cp
 sed "s|@@HOME@@|$HOME|g" $HOME/Developer/personal/dotfiles/big-data/zookeeper/zoo.cfg >| /usr/local/etc/zookeeper/zoo.cfg 
-# cp -p $HOME/Developer/personal/dotfiles/big-data/zookeeper/zkEnv.sh /usr/local/Cellar/zookeeper/3.5.8/libexec/bin/zkEnv.sh
-# chmod u+x /usr/local/Cellar/zookeeper/3.5.8/libexec/zkEnv.sh
+cp -p $HOME/Developer/personal/dotfiles/big-data/zookeeper/zookeeper-env.sh /usr/local/etc/zookeeper/zookeeper-env.sh
+ chmod u+x /usr/local/etc/zookeeper/zookeeper-env.sh
 
 echo "Updated zookeeper configs"
 

@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # ZK
-export ZOOKEEPER_VERSION=3.4.14
+export ZOOKEEPER_VERSION=3.5.8
 export ZOOKEEPER_HOME=/usr/local/Cellar/zookeeper/${ZOOKEEPER_VERSION}/libexec
 export ZOOKEEPER_CONF_DIR=/usr/local/etc/zookeeper
 export PATH=$ZOOKEEPER_HOME/bin:$PATH
@@ -29,7 +29,7 @@ alias pig-mr='pig -l $PIG_HOME/logs -4 $PIG_HOME/conf/nolog.conf'
 alias pig-local='pig -x local -l $PIG_HOME/logs -4 $PIG_HOME/conf/nolog.conf'
 
 # Hbase
-export HBASE_VERSION=1.3.5
+export HBASE_VERSION=2.2.3
 export HBASE_HOME=/usr/local/Cellar/hbase/${HBASE_VERSION}/libexec
 export HBASE_CONF_DIR=$HBASE_HOME/conf
 export PATH=$HBASE_HOME/bin:$PATH

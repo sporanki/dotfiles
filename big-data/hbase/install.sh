@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# HBase 1.3.5
+# HBase 2.2.3
 
 # PRE-REQS
 # jdk8 is installed and 
