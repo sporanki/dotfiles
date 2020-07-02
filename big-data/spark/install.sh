@@ -17,7 +17,6 @@ brew update && brew upgrade
 brew unpin apache-spark
 brew remove apache-spark
 
-#cp $HOME/Developer/personal/dotfiles/big-data/spark/rb/apache-spark.rb /usr/local/Homebrew/Library/Taps/homebrew/homebrew-core/Formula/
 brew install apache-spark
 brew pin apache-spark
 VER=$(brew info apache-spark | ggrep -oP '(?<=^/usr/local/Cellar/apache-spark/).*?(?=\s)')

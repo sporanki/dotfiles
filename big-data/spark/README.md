@@ -87,3 +87,21 @@ scala> spark.sql("select * from default.test").show
 
 scala>
 ```
+
+## Run job in Standalone cluster mode
+
+```console
+spark-submit --class com.sundogsoftware.spark.MovieSimilaritiesAsp target/scala-2.12/sparkscala3_2.12-0.1.0-SNAPSHOT.jar 216
+```
+
+In local cluster mode it is possible view the DAG and other useful information via <http://localhost:4040/jobs/>
+
+NOTE: The spark manager is only available while the job is actively running.
+
+## Run job in Hadoop Yarn cluster mode
+
+```console
+spark-submit --class com.sundogsoftware.spark.MovieSimilaritiesAsp --master yarn --deploy-mode cluster target/scala-2.12/sparkscala3_2.12-0.1.0-SNAPSHOT.jar 216
+```
+
+In hadoop yarn mode it is possible to view the status via the Resource Manager <http://localhost:8088/cluster>
